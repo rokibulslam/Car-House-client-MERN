@@ -6,6 +6,6 @@ const initializeFirebase = () => {
     initializeApp(firebaseConfig);
 }
 
-export default initializeApp;
+export default initializeFirebase;
 
 
