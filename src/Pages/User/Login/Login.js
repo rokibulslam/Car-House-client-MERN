@@ -26,7 +26,7 @@ const Login = () => {
   return (
     <Container>
       <Typography sx={{ mt: 5 }} variant="h2" component="div" gutterBottom>
-        Register
+        Login Here
       </Typography>
       <form onSubmit={handleLoginOnSubmit}>
         <TextField

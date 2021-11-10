@@ -4,12 +4,14 @@ import Home from "./Pages/Home/Home/Home";
 import AuthProvider from "./Context/AuthProvider/AuthProvider";
 import Register from "./Pages/User/Register/Register";
 import Login from "./Pages/User/Login/Login";
+import Navigation from "./Pages/Home/Navigation/Navigation";
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
         <Router>
+          <Navigation></Navigation>
           <Switch>
             <Route exact path="/">
               <Home></Home>

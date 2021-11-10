@@ -88,9 +88,9 @@ const Register = () => {
         </form>
       )}
       {isLoading && <CircularProgress />}
-      {user?.email && (
+      {/* {user?.email && (
         <Alert severity="success">User Created successfully!</Alert>
-      )}
+      )} */}
       {error && <Alert severity="error">{error}</Alert>}
     </Container>
   );
