@@ -10,15 +10,15 @@ const Register = () => {
     console.log(user)
     const history = useHistory();
 
-  const handleOnBlur = (e) => {
-    const textField = e.target.name;
-    const inputValue = e.target.value;
+  const handleRegisterField = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
     const newRegisterData = { ...registerData };
-    newRegisterData[textField] = inputValue;
+    newRegisterData[field] = value;
     setRegisterData(newRegisterData);
     console.log(registerData);
   };
-  const handleOnSubmit = (e) => {
+  const handleRegisterOnSubmit = (e) => {
     if (registerData.password1 !== registerData.password2) {
       alert("Your password did not match");
       return;
@@ -34,20 +34,20 @@ const Register = () => {
         Register
       </Typography>
       {!isLoading && (
-        <form onSubmit={handleOnSubmit}>
+        <form onSubmit={handleRegisterOnSubmit}>
           <TextField
             required
             sx={{ width: "50%", m: 1 }}
             id="filled-basic"
             label="Your Name"
             name="name"
-            onBlur={handleOnBlur}
+            onBlur={handleRegisterField}
             variant="filled"
           />
           <TextField
             required
             sx={{ width: "50%", m: 1 }}
-            onBlur={handleOnBlur}
+            onBlur={handleRegisterField}
             id="filled-password-input"
             label="Email"
             type="email"
@@ -58,7 +58,7 @@ const Register = () => {
           <TextField
             required
             sx={{ width: "50%", m: 1 }}
-            onBlur={handleOnBlur}
+            onBlur={handleRegisterField}
             id="filled-password-input"
             label="Password"
             type="password"
@@ -69,7 +69,7 @@ const Register = () => {
           <TextField
             required
             sx={{ width: "50%", m: 1 }}
-            onBlur={handleOnBlur}
+            onBlur={handleRegisterField}
             id="filled-password-input"
             label="Re-Type Password"
             type="password"
