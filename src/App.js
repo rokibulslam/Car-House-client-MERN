@@ -8,6 +8,7 @@ import Navigation from "./Pages/Home/Navigation/Navigation";
 import Purchase from "./Pages/Purchase/Purchase";
 import AllCycle from "./Pages/AllCycle/AllCycle";
 import DashBoard from "./Pages/DashBoard/DashBoard/DashBoard";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 
 function App() {
@@ -23,21 +24,21 @@ function App() {
             <Route path="/home">
               <Home></Home>
             </Route>
-            <Route path="/register">
+            <PrivateRoute path="/register">
               <Register></Register>
-            </Route>
-            <Route path="/login">
+            </PrivateRoute>
+            <PrivateRoute path="/login">
               <Login></Login>
-            </Route>
+            </PrivateRoute>
             <Route path="/showroom">
               <AllCycle></AllCycle>
             </Route>
-            <Route path="/dashboard">
+            <PrivateRoute path="/dashboard">
               <DashBoard></DashBoard>
-            </Route>
-            <Route path="/purchase/:id">
+            </PrivateRoute>
+            <PrivateRoute path="/purchase/:id">
               <Purchase></Purchase>
-            </Route>
+            </PrivateRoute>
           </Switch>
         </Router>
       </AuthProvider>

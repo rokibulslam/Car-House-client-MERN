@@ -10,10 +10,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
-import { Button, List, ListItem} from "@mui/material";
-import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
+import { Button, List, ListItem } from "@mui/material";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import AddProduct from "../AddProduct/AddProduct";
+import MyOrders from "../MyOrders/MyOrders";
+import ManageOllOrders from "../ManageAllOrders/ManageOllOrders";
+import ManageProducts from "../ManageProducts/ManageProducts";
 const drawerWidth = 240;
 
 function DashBoard(props) {
@@ -47,7 +50,7 @@ function DashBoard(props) {
           </NavLink>
         </ListItem>
         <ListItem>
-          <NavLink style={{ textDecoration: "none" }} to="/purchase">
+          <NavLink style={{ textDecoration: "none" }} to={`${url}/myOrders`}>
             <Button variant="text" style={{ color: "inherit" }}>
               My Orders
             </Button>
@@ -68,14 +71,20 @@ function DashBoard(props) {
           </NavLink>
         </ListItem>
         <ListItem>
-          <NavLink style={{ textDecoration: "none" }} to="/purchase">
+          <NavLink
+            style={{ textDecoration: "none" }}
+            to={`${url}/manageProducts`}
+          >
             <Button variant="text" style={{ color: "inherit" }}>
-              Update A Product
+              Manage Products
             </Button>
           </NavLink>
         </ListItem>
         <ListItem>
-          <NavLink style={{ textDecoration: "none" }} to="/purchase">
+          <NavLink
+            style={{ textDecoration: "none" }}
+            to={`${url}/manageOrders`}
+          >
             <Button variant="text" style={{ color: "inherit" }}>
               Manage All Orders
             </Button>
@@ -170,6 +179,15 @@ function DashBoard(props) {
         <Switch>
           <Route path={`${path}/addProduct`}>
             <AddProduct></AddProduct>
+          </Route>
+          <Route path={`${path}/myOrders`}>
+            <MyOrders></MyOrders>
+          </Route>
+          <Route path={`${path}/manageOrders`}>
+            <ManageOllOrders></ManageOllOrders>
+          </Route>
+          <Route path={`${path}/manageProducts`}>
+            <ManageProducts></ManageProducts>
           </Route>
         </Switch>
       </Box>
