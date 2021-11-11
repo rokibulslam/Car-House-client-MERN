@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
+import { Dropdown, DropdownButton, Table } from "react-bootstrap";
 
 const ManageOllOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -13,17 +13,17 @@ const ManageOllOrders = () => {
   }, [deletes]);
 
   const handlePending = (id, text) => {
-          axios
-            .put(`http://localhost:5000/order/status/${id}`, {
-              status: text,
-            })
-            .then((res) => {
-              if (res.data.acknowledged) {
-                alert("Approved Order");
-                window.location.reload();
-              }
-            })
-            .then((data) => setDelete(data));
+    axios
+      .put(`http://localhost:5000/order/status/${id}`, {
+        status: text,
+      })
+      .then((res) => {
+        if (res.data.acknowledged) {
+          alert("Approved Order");
+          window.location.reload();
+        }
+      })
+      .then((data) => setDelete(data));
   };
 
   const handleDelete = (id) => {
@@ -81,19 +81,37 @@ const ManageOllOrders = () => {
                   )}
 
                   <td>
-                    <button
-                      className="btn btn-danger m-2"
-                      onClick={() => handleDelete(order._id)}
+                    <DropdownButton
+                      id="dropdown-basic-button"
+                      title="Manange Order"
                     >
-                      Cancel Order
-                    </button>{" "}
+                      <Dropdown.Item href="#/action-1">
+                        <button
+                          className="btn btn-success"
+                          onClick={() => handlePending(order._id, "Approved")}
+                        >
+                          Approved Order
+                        </button>
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#/action-2">
+                        <button
+                          className="btn btn-success"
+                          onClick={() => handlePending(order._id, "Shipping")}
+                        >
+                          Shipping
+                        </button>
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#/action-3">
+                        <button
+                          className="btn btn-warning "
+                          onClick={() => handleDelete(order._id)}
+                        >
+                          Cancel Order
+                        </button>
+                      </Dropdown.Item>
+                    </DropdownButton>
+
                     <br />
-                    <button
-                      className="btn btn-success"
-                      onClick={() => handlePending(order._id, "Approved")}
-                    >
-                      Approved Order
-                    </button>
                   </td>
                 </tr>
               </tbody>
