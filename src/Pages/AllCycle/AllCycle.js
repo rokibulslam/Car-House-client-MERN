@@ -8,7 +8,7 @@ import Cycles from "../Home/Cycles/Cycles";
 const AllCycle = () => {
   const [cycles, setCycles] = useState([]);
   useEffect(() => {
-    fetch("./cycle.json")
+    fetch("http://localhost:5000/product")
       .then((res) => res.json())
       .then((data) => setCycles(data));
   }, []);

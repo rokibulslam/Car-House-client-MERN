@@ -12,11 +12,16 @@ import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 import { Button, List, ListItem} from "@mui/material";
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
+import AddProduct from "../AddProduct/AddProduct";
 const drawerWidth = 240;
 
 function DashBoard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  let { path, url } = useRouteMatch();
+  const { admin } = useAuth();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -56,7 +61,7 @@ function DashBoard(props) {
           </NavLink>
         </ListItem>
         <ListItem>
-          <NavLink style={{ textDecoration: "none" }} to="/purchase">
+          <NavLink style={{ textDecoration: "none" }} to={`${url}/addProduct`}>
             <Button variant="text" style={{ color: "inherit" }}>
               Add a Product
             </Button>
@@ -163,8 +168,8 @@ function DashBoard(props) {
       >
         <Toolbar />
         <Switch>
-          <Route>
-
+          <Route path={`${path}/addProduct`}>
+            <AddProduct></AddProduct>
           </Route>
         </Switch>
       </Box>

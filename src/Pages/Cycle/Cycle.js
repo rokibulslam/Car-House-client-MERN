@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 const Cycle = (props) => {
     
-  const { name, price, description, imageURL } = props.cycle;
+  const { _id, ProductName, price, description, imgURL } = props.cycle;
 
     return (
       <Container>
@@ -28,12 +28,12 @@ const Cycle = (props) => {
               <CardMedia
                 component="img"
                 height="140"
-                image={imageURL}
+                image={imgURL}
                 alt="green iguana"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {name}
+                  {ProductName}
                 </Typography>
                 <Typography gutterBottom variant="h5" component="div">
                   Price:${price}
@@ -44,7 +44,7 @@ const Cycle = (props) => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <NavLink style={{ textDecoration: "none" }} to="/purchase">
+              <NavLink style={{ textDecoration: "none" }} to={`/purchase/${_id}`}>
                 <Button variant="contained">Purchase</Button>
               </NavLink>
             </CardActions>
