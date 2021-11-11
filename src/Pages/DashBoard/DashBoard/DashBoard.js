@@ -17,6 +17,7 @@ import AddProduct from "../AddProduct/AddProduct";
 import MyOrders from "../MyOrders/MyOrders";
 import ManageOllOrders from "../ManageAllOrders/ManageOllOrders";
 import ManageProducts from "../ManageProducts/ManageProducts";
+import UpdateProduct from "../UpdateProduct/UpdateProduct";
 const drawerWidth = 240;
 
 function DashBoard(props) {
@@ -93,7 +94,7 @@ function DashBoard(props) {
         <ListItem>
           <NavLink style={{ textDecoration: "none" }} to="/purchase">
             <Button variant="text" style={{ color: "inherit" }}>
-              Users & Admin
+              Update Product
             </Button>
           </NavLink>
         </ListItem>
@@ -188,6 +189,9 @@ function DashBoard(props) {
           </Route>
           <Route path={`${path}/manageProducts`}>
             <ManageProducts></ManageProducts>
+          </Route>
+          <Route path={`${path}/updateProduct/:id`}>
+            <UpdateProduct></UpdateProduct>
           </Route>
         </Switch>
       </Box>

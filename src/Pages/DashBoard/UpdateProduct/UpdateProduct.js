@@ -2,8 +2,11 @@ import { Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
 import React, { useState } from "react";
+import { useParams } from "react-router";
 
-const AddProduct = () => {
+const UpdateProduct = () => {
+    const { id } = useParams()
+    console.log(id)
   const [product, setProduct] = useState({});
 
   const handleProductInfo = (e) => {
@@ -13,16 +16,18 @@ const AddProduct = () => {
     newOrderData[field] = value;
     setProduct(newOrderData);
   };
-    const onSubmitAddProduct = (e) => {
-        axios.post("http://localhost:5000/product/addProduct", product).then((res) => {
-          if (res.data.insertedId) {
-            alert("New Product Added Successfully");
-            window.location.reload();
-          }
-        });
-        e.preventDefault()
-        console.log(product)
-    }
+  const onSubmitAddProduct = (e) => {
+    axios
+      .post("http://localhost:5000/product/addProduct", product)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("New Product Added Successfully");
+          window.location.reload();
+        }
+      });
+    e.preventDefault();
+    console.log(product);
+  };
   return (
     <Box>
       <Container>
@@ -85,4 +90,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;

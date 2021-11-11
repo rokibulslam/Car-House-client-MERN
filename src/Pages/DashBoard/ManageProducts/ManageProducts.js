@@ -1,11 +1,91 @@
-import React from 'react';
+import {
+  Button,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
+  Typography,
+} from "@mui/material";
+import { Box } from "@mui/system";
+import axios from "axios";
+
+import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const ManageProducts = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+    const [products, setProducts] = useState([]);
+    const [deletes, setDeletes] = useState('')
+  useEffect(() => {
+    fetch("http://localhost:5000/product")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, [deletes]);
+    const handleDeleteProduct = (id) => {
+        axios
+          .delete(`http://localhost:5000/product/delete/${id}`)
+          .then((res) => {
+            if (res.data.deletedCount) {
+              alert("Product Has Deleted");
+            }
+          })
+          .then((data) => setDeletes(data));
+    }
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2}>
+        {products.slice(0, 6)?.map((product) => (
+          <Grid
+            key={product.ProductName}
+            sx={{ display: "flex", justifyContent: "center" }}
+            item
+            xs={12}
+            md={4}
+          >
+            <Card
+              sx={{
+                maxWidth: 345,
+                display: "flex",
+                textAlign: "start",
+                justifyContent: "flex-end",
+                flexDirection: "column",
+              }}
+            >
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={product.imgURL}
+                  alt="green iguana"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {}
+                  </Typography>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Price:${product.price}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {product.description.slice(0, 100)}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+               
+                        <Button sx={{marginRight: 2}} onClick={() => handleDeleteProduct(product._id)} variant="contained">Delete</Button>
+                
+                
+                  <Button  variant="contained">Update</Button>
+                
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+  );
 };
 
 export default ManageProducts;
