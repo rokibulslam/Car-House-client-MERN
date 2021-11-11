@@ -7,6 +7,8 @@ import Login from "./Pages/User/Login/Login";
 import Navigation from "./Pages/Home/Navigation/Navigation";
 import Purchase from "./Pages/Purchase/Purchase";
 import AllCycle from "./Pages/AllCycle/AllCycle";
+import DashBoard from "./Pages/DashBoard/DashBoard/DashBoard";
+
 
 function App() {
   return (
@@ -24,14 +26,17 @@ function App() {
             <Route path="/register">
               <Register></Register>
             </Route>
-            <Route path="/login"> 
-                <Login></Login>
+            <Route path="/login">
+              <Login></Login>
             </Route>
             <Route path="/showroom">
-                <AllCycle></AllCycle>
+              <AllCycle></AllCycle>
+            </Route>
+            <Route path="/dashboard">
+              <DashBoard></DashBoard>
             </Route>
             <Route path="/purchase">
-                <Purchase></Purchase>
+              <Purchase></Purchase>
             </Route>
           </Switch>
         </Router>
