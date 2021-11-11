@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Cycle from "../Cycle/Cycle";
 import Cycles from "../Home/Cycles/Cycles";
 
+
 const AllCycle = () => {
   const [cycles, setCycles] = useState([]);
   useEffect(() => {
@@ -13,19 +14,15 @@ const AllCycle = () => {
   }, []);
   return (
     <Container>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
-                  {
-                      cycles?.map(cycle =>
-                          <Cycle
-                          key={cycle.name}
-                          cycle={cycle}
-                      ></Cycle>
-                      )
-                  }
-              </Grid>
-              
-      </Box>
+      <Container>
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container spacing={2}>
+            {cycles?.map((cycle) => (
+              <Cycle key={cycle.name} cycle={cycle}></Cycle>
+            ))}
+          </Grid>
+        </Box>
+      </Container>
     </Container>
   );
 };

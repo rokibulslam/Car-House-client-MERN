@@ -26,10 +26,16 @@ const Navigation = () => {
               AK Bicycle
             </Typography>
             <NavLink
-              to="/appointment"
+              to="/home"
               style={{ textDecoration: "none", color: "white" }}
             >
-              <Button color="inherit">Appointment</Button>
+              <Button color="inherit">Home</Button>
+            </NavLink>
+            <NavLink
+              to="/showroom"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <Button color="inherit">Showroom</Button>
             </NavLink>
             {user?.email ? (
               <Box>

@@ -1,12 +1,12 @@
 import React from 'react';
 import AllCycle from '../../AllCycle/AllCycle';
+import Cycles from '../Cycles/Cycles';
 import Navigation from '../Navigation/Navigation';
 
 const Home = () => {
     return (
         <div>
-            <h1>this is Home</h1>
-            <AllCycle></AllCycle>
+            <Cycles></Cycles>
         </div>
     );
 };
