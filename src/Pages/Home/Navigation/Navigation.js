@@ -1,13 +1,14 @@
 import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import MenuIcon from "@mui/icons-material/Menu";
 import useAuth from '../../../Hooks/useAuth';
 
 
 const Navigation = () => {
-    const {user, logout} = useAuth()
+  const { user, logout } = useAuth()
+  
     return (
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
