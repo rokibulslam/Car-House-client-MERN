@@ -8,7 +8,7 @@ const Cycle = (props) => {
   const { _id, ProductName, price, description, imgURL } = props.cycle;
 
     return (
-      <Container>
+      
         <Grid
           sx={{display: "flex", justifyContent: "center" }}
           item
@@ -16,10 +16,9 @@ const Cycle = (props) => {
           md={4}
         >
           <Card
-            sx={{
+          sx={{
               maxWidth: 345,
               display: "flex",
-        
               justifyContent: "flex-end",
               flexDirection: "column",
             }}
@@ -50,7 +49,7 @@ const Cycle = (props) => {
             </CardActions>
           </Card>
         </Grid>
-      </Container>
+      
     );
 };
 
