@@ -19,6 +19,7 @@ import ManageOllOrders from "../ManageAllOrders/ManageOllOrders";
 import ManageProducts from "../ManageProducts/ManageProducts";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import Review from "../Review/Review";
+import Payment from "../Payment/Payment";
 const drawerWidth = 240;
 
 function DashBoard(props) {
@@ -51,29 +52,36 @@ function DashBoard(props) {
             </Button>
           </NavLink>
         </ListItem>
-        <ListItem>
-          <NavLink style={{ textDecoration: "none" }} to={`${url}/review`}>
-            <Button variant="text" style={{ color: "inherit" }}>
-              Review
-            </Button>
-          </NavLink>
-        </ListItem>
-        <ListItem>
-          <NavLink style={{ textDecoration: "none" }} to={`${url}/myOrders`}>
-            <Button variant="text" style={{ color: "inherit" }}>
-              My Orders
-            </Button>
-          </NavLink>
-        </ListItem>
-        {admin && (
+        {!admin && (
           <Box>
             <ListItem>
-              <NavLink style={{ textDecoration: "none" }} to="/purchase">
+              <NavLink style={{ textDecoration: "none" }} to={`${url}/review`}>
                 <Button variant="text" style={{ color: "inherit" }}>
-                  Add an Admin
+                  Review
                 </Button>
               </NavLink>
             </ListItem>
+            <ListItem>
+              <NavLink
+                style={{ textDecoration: "none" }}
+                to={`${url}/myOrders`}
+              >
+                <Button variant="text" style={{ color: "inherit" }}>
+                  My Orders
+                </Button>
+              </NavLink>
+            </ListItem>
+            <ListItem>
+              <NavLink style={{ textDecoration: "none" }} to={`${url}/payment`}>
+                <Button variant="text" style={{ color: "inherit" }}>
+                  Payment
+                </Button>
+              </NavLink>
+            </ListItem>
+          </Box>
+        )}
+        {admin && (
+          <Box>
             <ListItem>
               <NavLink
                 style={{ textDecoration: "none" }}
@@ -213,6 +221,9 @@ function DashBoard(props) {
           </Route>
           <Route path={`${path}/review`}>
             <Review></Review>
+          </Route>
+          <Route path={`${path}/payment`}>
+            <Payment></Payment>
           </Route>
         </Switch>
       </Box>
