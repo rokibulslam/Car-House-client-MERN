@@ -1,4 +1,4 @@
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import Cycle from "../Cycle/Cycle";
@@ -17,8 +17,11 @@ const AllCycle = () => {
     <div>
       <Navigation></Navigation>
       <Container>
+        <Typography sx={{ mt: 5 }} variant="h2" component="div" gutterBottom>
+          Explore Our Bi-Cycle
+        </Typography>
         <Box sx={{ flexGrow: 1, m: 5 }}>
-          <Grid container spacing={2}>
+          <Grid container spacing={4}>
             {cycles?.map((cycle) => (
               <Cycle key={cycle.name} cycle={cycle}></Cycle>
             ))}

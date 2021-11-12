@@ -24,9 +24,12 @@ const Cycles = () => {
     },[])
     return (
       <Container>
-        <Box sx={{ flexGrow: 1 , m: 5}}>
-          <Grid container spacing={2}>
-            {allCycle.slice(0, 6)?.map((cycle) => (
+        <Typography sx={{ mt: 5 }} variant="h2" component="div" gutterBottom>
+          Bi-cycle! Bi-cycle! I want to ride my bike.
+        </Typography>
+        <Box sx={{ flexGrow: 1, mt: 5, mb: 5 }}>
+          <Grid container spacing={4}>
+            {allCycle.slice(0, 8)?.map((cycle) => (
               <Grid
                 key={cycle.ProductName}
                 sx={{ display: "flex", justifyContent: "center" }}
