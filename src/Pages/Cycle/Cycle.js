@@ -10,7 +10,7 @@ const Cycle = (props) => {
     return (
       
         <Grid
-          sx={{display: "flex", justifyContent: "center" }}
+          sx={{display: "flex", justifyContent: "center"}}
           item
           xs={12}
           md={4}

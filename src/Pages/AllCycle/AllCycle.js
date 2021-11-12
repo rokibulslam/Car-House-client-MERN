@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import Cycle from "../Cycle/Cycle";
 import Cycles from "../Home/Cycles/Cycles";
+import Navigation from "../Home/Navigation/Navigation";
 
 
 const AllCycle = () => {
@@ -13,9 +14,10 @@ const AllCycle = () => {
       .then((data) => setCycles(data));
   }, []);
   return (
-    <Container>
+    <div>
+      <Navigation></Navigation>
       <Container>
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1, m: 5 }}>
           <Grid container spacing={2}>
             {cycles?.map((cycle) => (
               <Cycle key={cycle.name} cycle={cycle}></Cycle>
@@ -23,7 +25,7 @@ const AllCycle = () => {
           </Grid>
         </Box>
       </Container>
-    </Container>
+    </div>
   );
 };
 

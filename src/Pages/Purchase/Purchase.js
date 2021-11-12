@@ -16,6 +16,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import Navigation from "../Home/Navigation/Navigation";
 
 const Purchase = () => {
   const { id } = useParams();
@@ -65,6 +66,7 @@ const Purchase = () => {
   };
   return (
     <Box>
+      <Navigation></Navigation>
       <Typography
         sx={{ textAlign: "start", mt: 5 }}
         variant="h2"

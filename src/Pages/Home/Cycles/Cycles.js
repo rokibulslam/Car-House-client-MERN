@@ -24,7 +24,7 @@ const Cycles = () => {
     },[])
     return (
       <Container>
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1 , m: 5}}>
           <Grid container spacing={2}>
             {allCycle.slice(0, 6)?.map((cycle) => (
               <Grid
