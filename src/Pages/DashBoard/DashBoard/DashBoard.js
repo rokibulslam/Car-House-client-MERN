@@ -62,10 +62,7 @@ function DashBoard(props) {
               </NavLink>
             </ListItem>
             <ListItem>
-              <NavLink
-                style={{ textDecoration: "none" }}
-                to={`${url}/myOrders`}
-              >
+              <NavLink style={{ textDecoration: "none" }} to={`${url}`}>
                 <Button variant="text" style={{ color: "inherit" }}>
                   My Orders
                 </Button>
@@ -113,10 +110,7 @@ function DashBoard(props) {
               </NavLink>
             </ListItem>
             <ListItem>
-              <NavLink
-                style={{ textDecoration: "none" }}
-                to={`${url}/adminCreate`}
-              >
+              <NavLink style={{ textDecoration: "none" }} to={`${url}`}>
                 <Button variant="text" style={{ color: "inherit" }}>
                   Make An Admin
                 </Button>
@@ -207,7 +201,7 @@ function DashBoard(props) {
           <Route path={`${path}/addProduct`}>
             <AddProduct></AddProduct>
           </Route>
-          <Route path={`${path}/myOrders`}>
+          <Route exact path={`${path}`}>
             <MyOrders></MyOrders>
           </Route>
           <Route path={`${path}/manageOrders`}>
@@ -216,7 +210,7 @@ function DashBoard(props) {
           <Route path={`${path}/manageProducts`}>
             <ManageProducts></ManageProducts>
           </Route>
-          <Route path={`${path}/adminCreate`}>
+          <Route exact path={`${path}`}>
             <MakeAdmin></MakeAdmin>
           </Route>
           <Route path={`${path}/review`}>

@@ -2,7 +2,7 @@ import { Grid, Paper, Typography, Button, Rating } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 
-const Review = () => {
+const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
         fetch("http://localhost:5000/reviews")
@@ -37,7 +37,7 @@ const Review = () => {
                   "& > legend": { mt: 2 },
                 }}
               >
-                <Rating name="simple-controlled" value={review.star} />
+                <Rating readOnly name="simple-controlled" value={review.star} />
               </Box>
 
               <Typography variant="h7" gutterBottom component="div">
@@ -54,4 +54,4 @@ const Review = () => {
   );
 };
 
-export default Review;
+export default Reviews;
