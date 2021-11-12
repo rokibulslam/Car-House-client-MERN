@@ -18,6 +18,7 @@ import MyOrders from "../MyOrders/MyOrders";
 import ManageOllOrders from "../ManageAllOrders/ManageOllOrders";
 import ManageProducts from "../ManageProducts/ManageProducts";
 import UpdateProduct from "../UpdateProduct/UpdateProduct";
+import MakeAdmin from "../MakeAdmin/MakeAdmin";
 const drawerWidth = 240;
 
 function DashBoard(props) {
@@ -44,7 +45,7 @@ function DashBoard(props) {
           </NavLink>
         </ListItem>
         <ListItem>
-          <NavLink style={{ textDecoration: "none" }} to="/purchase">
+          <NavLink style={{ textDecoration: "none" }} to="/showroom">
             <Button variant="text" style={{ color: "inherit" }}>
               Showroom
             </Button>
@@ -57,47 +58,57 @@ function DashBoard(props) {
             </Button>
           </NavLink>
         </ListItem>
-        <ListItem>
-          <NavLink style={{ textDecoration: "none" }} to="/purchase">
-            <Button variant="text" style={{ color: "inherit" }}>
-              Add an Admin
-            </Button>
-          </NavLink>
-        </ListItem>
-        <ListItem>
-          <NavLink style={{ textDecoration: "none" }} to={`${url}/addProduct`}>
-            <Button variant="text" style={{ color: "inherit" }}>
-              Add a Product
-            </Button>
-          </NavLink>
-        </ListItem>
-        <ListItem>
-          <NavLink
-            style={{ textDecoration: "none" }}
-            to={`${url}/manageProducts`}
-          >
-            <Button variant="text" style={{ color: "inherit" }}>
-              Manage Products
-            </Button>
-          </NavLink>
-        </ListItem>
-        <ListItem>
-          <NavLink
-            style={{ textDecoration: "none" }}
-            to={`${url}/manageOrders`}
-          >
-            <Button variant="text" style={{ color: "inherit" }}>
-              Manage All Orders
-            </Button>
-          </NavLink>
-        </ListItem>
-        <ListItem>
-          <NavLink style={{ textDecoration: "none" }} to="/purchase">
-            <Button variant="text" style={{ color: "inherit" }}>
-              Update Product
-            </Button>
-          </NavLink>
-        </ListItem>
+        {admin && (
+          <Box>
+            <ListItem>
+              <NavLink style={{ textDecoration: "none" }} to="/purchase">
+                <Button variant="text" style={{ color: "inherit" }}>
+                  Add an Admin
+                </Button>
+              </NavLink>
+            </ListItem>
+            <ListItem>
+              <NavLink
+                style={{ textDecoration: "none" }}
+                to={`${url}/addProduct`}
+              >
+                <Button variant="text" style={{ color: "inherit" }}>
+                  Add a Product
+                </Button>
+              </NavLink>
+            </ListItem>
+            <ListItem>
+              <NavLink
+                style={{ textDecoration: "none" }}
+                to={`${url}/manageProducts`}
+              >
+                <Button variant="text" style={{ color: "inherit" }}>
+                  Manage Products
+                </Button>
+              </NavLink>
+            </ListItem>
+            <ListItem>
+              <NavLink
+                style={{ textDecoration: "none" }}
+                to={`${url}/manageOrders`}
+              >
+                <Button variant="text" style={{ color: "inherit" }}>
+                  Manage All Orders
+                </Button>
+              </NavLink>
+            </ListItem>
+            <ListItem>
+              <NavLink
+                style={{ textDecoration: "none" }}
+                to={`${url}/adminCreate`}
+              >
+                <Button variant="text" style={{ color: "inherit" }}>
+                  Make An Admin
+                </Button>
+              </NavLink>
+            </ListItem>
+          </Box>
+        )}
       </List>
     </div>
   );
@@ -190,8 +201,8 @@ function DashBoard(props) {
           <Route path={`${path}/manageProducts`}>
             <ManageProducts></ManageProducts>
           </Route>
-          <Route path={`${path}/updateProduct/:id`}>
-            <UpdateProduct></UpdateProduct>
+          <Route path={`${path}/adminCreate`}>
+            <MakeAdmin></MakeAdmin>
           </Route>
         </Switch>
       </Box>

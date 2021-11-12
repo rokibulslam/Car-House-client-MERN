@@ -5,7 +5,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-    updateProfile,
+  updateProfile,
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
@@ -26,6 +26,7 @@ const useFirebase = () => {
         setError("");
         const newUser = { email, displayName: name };
         setUser(newUser);
+        saveUser(email, name, "POST");
         updateProfile(auth.currentUser, {
           displayName: name,
         })
@@ -40,8 +41,7 @@ const useFirebase = () => {
       })
       .finally(() => setIsLoading(false));
   };
-    
-    
+
   const loginUser = (email, password, location, history) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
@@ -55,36 +55,56 @@ const useFirebase = () => {
       })
       .finally(() => setIsLoading(false));
   };
-    
-    
-    useEffect(() => {
-      const unsubscribed = onAuthStateChanged(auth, (user) => {
-        if (user) {
-          setUser(user);
-        }
-        else {
-          setUser({});
-        }
-        setIsLoading(false);
-      });
-      return () => unsubscribed;
-    }, [auth]);
 
+  useEffect(() => {
+    const unsubscribed = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser({});
+      }
+      setIsLoading(false);
+    });
+    return () => unsubscribed;
+  }, [auth]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setAdmin(data.admin));
+  }, [user.email]);
+  const logout = () => {
+    setIsLoading(true);
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      })
+      .finally(() => setIsLoading(false));
+  };
 
-    const logout = () => {
-      setIsLoading(true);
-      signOut(auth)
-        .then(() => {
-          // Sign-out successful.
-        })
-        .catch((error) => {
-          // An error happened.
-        })
-        .finally(() => setIsLoading(false));
-    };
-    return {
-        user, admin, isLoading, error, registerNewUser, loginUser, logout, setError
-    }
+  const saveUser = (email, displayName, method) => {
+    const user = { email, displayName };
+    fetch("http://localhost:5000/users", {
+      method: method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then();
+  };
+
+  return {
+    user,
+    admin,
+    isLoading,
+    error,
+    registerNewUser,
+    loginUser,
+    logout,
+    setError,
+  };
 };
 
 export default useFirebase;
