@@ -17,8 +17,8 @@ import AddProduct from "../AddProduct/AddProduct";
 import MyOrders from "../MyOrders/MyOrders";
 import ManageOllOrders from "../ManageAllOrders/ManageOllOrders";
 import ManageProducts from "../ManageProducts/ManageProducts";
-import UpdateProduct from "../UpdateProduct/UpdateProduct";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
+import Review from "../Review/Review";
 const drawerWidth = 240;
 
 function DashBoard(props) {
@@ -48,6 +48,13 @@ function DashBoard(props) {
           <NavLink style={{ textDecoration: "none" }} to="/showroom">
             <Button variant="text" style={{ color: "inherit" }}>
               Showroom
+            </Button>
+          </NavLink>
+        </ListItem>
+        <ListItem>
+          <NavLink style={{ textDecoration: "none" }} to={`${url}/review`}>
+            <Button variant="text" style={{ color: "inherit" }}>
+              Review
             </Button>
           </NavLink>
         </ListItem>
@@ -203,6 +210,9 @@ function DashBoard(props) {
           </Route>
           <Route path={`${path}/adminCreate`}>
             <MakeAdmin></MakeAdmin>
+          </Route>
+          <Route path={`${path}/review`}>
+            <Review></Review>
           </Route>
         </Switch>
       </Box>
