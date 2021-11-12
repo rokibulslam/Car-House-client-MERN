@@ -16,23 +16,26 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const ManageProducts = () => {
-    const [products, setProducts] = useState([]);
-    const [deletes, setDeletes] = useState('')
+  const [products, setProducts] = useState([]);
+  const [deletes, setDeletes] = useState("");
+
   useEffect(() => {
     fetch("http://localhost:5000/product")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [deletes]);
-    const handleDeleteProduct = (id) => {
-        axios
-          .delete(`http://localhost:5000/product/delete/${id}`)
-          .then((res) => {
-            if (res.data.deletedCount) {
-              alert("Product Has Deleted");
-            }
-          })
-          .then((data) => setDeletes(data));
-    }
+
+  const handleDeleteProduct = (id) => {
+    axios
+      .delete(`http://localhost:5000/product/delete/${id}`)
+      .then((res) => {
+        if (res.data.deletedCount) {
+          alert("Product Has Deleted");
+        }
+      })
+      .then((data) => setDeletes(data));
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -73,12 +76,20 @@ const ManageProducts = () => {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-               
-                        <Button sx={{marginRight: 2}} onClick={() => handleDeleteProduct(product._id)} variant="contained">Delete</Button>
-                
-                
-                  <Button  variant="contained">Update</Button>
-                
+                <Button
+                  sx={{ marginRight: 2 }}
+                  onClick={() => handleDeleteProduct(product._id)}
+                  variant="contained"
+                >
+                  Delete
+                </Button>
+
+                <NavLink
+                  style={{ textDecoration: "none" }}
+                  to={`/dashboard/updateProduct/${product._id}`}
+                >
+                  <Button variant="contained">Update</Button>
+                </NavLink>
               </CardActions>
             </Card>
           </Grid>

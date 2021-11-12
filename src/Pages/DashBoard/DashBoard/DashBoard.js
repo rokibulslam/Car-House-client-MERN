@@ -20,6 +20,7 @@ import ManageProducts from "../ManageProducts/ManageProducts";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import Review from "../Review/Review";
 import Payment from "../Payment/Payment";
+import UpdateProduct from "../UpdateProduct/UpdateProduct";
 const drawerWidth = 240;
 
 function DashBoard(props) {
@@ -27,7 +28,7 @@ function DashBoard(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   let { path, url } = useRouteMatch();
-  const { admin } = useAuth();
+  const { admin, logout } = useAuth();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -118,6 +119,11 @@ function DashBoard(props) {
             </ListItem>
           </Box>
         )}
+        <ListItem>
+          <Button onClick={logout} variant="text" style={{ color: "inherit" }}>
+            LogOut
+          </Button>
+        </ListItem>
       </List>
     </div>
   );
@@ -201,23 +207,28 @@ function DashBoard(props) {
           <Route path={`${path}/addProduct`}>
             <AddProduct></AddProduct>
           </Route>
+          {admin ? <Route exact path={`${path}`}>
+            <MakeAdmin></MakeAdmin>
+          </Route>:
           <Route exact path={`${path}`}>
             <MyOrders></MyOrders>
-          </Route>
+          </Route>}
+
           <Route path={`${path}/manageOrders`}>
             <ManageOllOrders></ManageOllOrders>
           </Route>
+
           <Route path={`${path}/manageProducts`}>
             <ManageProducts></ManageProducts>
-          </Route>
-          <Route exact path={`${path}`}>
-            <MakeAdmin></MakeAdmin>
           </Route>
           <Route path={`${path}/review`}>
             <Review></Review>
           </Route>
           <Route path={`${path}/payment`}>
             <Payment></Payment>
+          </Route>
+          <Route path={`${path}/updateProduct/:id`}>
+            <UpdateProduct></UpdateProduct>
           </Route>
         </Switch>
       </Box>

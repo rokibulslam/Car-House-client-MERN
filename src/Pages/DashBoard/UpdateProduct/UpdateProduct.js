@@ -1,14 +1,15 @@
 import { Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 const UpdateProduct = () => {
-    const { id } = useParams()
-    console.log(id)
-  const [product, setProduct] = useState({});
+  const { id } = useParams();
+  console.log(id);
 
+  const [product, setProduct] = useState();
+  
   const handleProductInfo = (e) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -17,14 +18,14 @@ const UpdateProduct = () => {
     setProduct(newOrderData);
   };
   const onSubmitAddProduct = (e) => {
-    axios
-      .post("http://localhost:5000/product/addProduct", product)
+    console.log(product);
+    axios.put(`http://localhost:5000/update/${id}`, product)
       .then((res) => {
-        if (res.data.insertedId) {
-          alert("New Product Added Successfully");
-          window.location.reload();
-        }
-      });
+      if (res.data.acknowledged) {
+        alert("Updated Successfully");
+        window.location.reload();
+      }
+    });
     e.preventDefault();
     console.log(product);
   };

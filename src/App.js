@@ -4,7 +4,6 @@ import Home from "./Pages/Home/Home/Home";
 import AuthProvider from "./Context/AuthProvider/AuthProvider";
 import Register from "./Pages/User/Register/Register";
 import Login from "./Pages/User/Login/Login";
-import Navigation from "./Pages/Home/Navigation/Navigation";
 import Purchase from "./Pages/Purchase/Purchase";
 import AllCycle from "./Pages/AllCycle/AllCycle";
 import DashBoard from "./Pages/DashBoard/DashBoard/DashBoard";
@@ -16,7 +15,6 @@ function App() {
     <div className="App">
       <AuthProvider>
         <Router>
-          <Navigation></Navigation>
           <Switch>
             <Route exact path="/">
               <Home></Home>

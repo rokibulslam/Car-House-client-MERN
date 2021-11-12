@@ -19,7 +19,7 @@ const Cycle = (props) => {
             sx={{
               maxWidth: 345,
               display: "flex",
-              textAlign: "start",
+        
               justifyContent: "flex-end",
               flexDirection: "column",
             }}
