@@ -42,18 +42,19 @@ function DashBoard(props) {
       <Toolbar />
       <List>
         <ListItem sx={{ color: "error.main", fontWeight: 600 }}>
-          {admin ? (
+          {admin === "admin" && (
             <Typography variant="h6" noWrap component="div">
               Admin: {user?.displayName}
             </Typography>
-          ) : (
+          )}
+          {admin === 'user' &&
             <Typography variant="h6" noWrap component="div">
               User: {user?.displayName}
             </Typography>
-          )}
+          }
         </ListItem>
 
-        {admin ? (
+        {admin === 'admin' &&
           <Box>
             <ListItem>
               <NavLink
@@ -113,8 +114,8 @@ function DashBoard(props) {
               </NavLink>
             </ListItem>
           </Box>
-        ) : (
-          <Box>
+        }
+          {admin === 'user'&& <Box>
             <ListItem>
               <NavLink style={{ textDecoration: "none" }} to="/Home">
                 <Button variant="text" style={{ color: "inherit" }}>
@@ -176,7 +177,7 @@ function DashBoard(props) {
               </NavLink>
             </ListItem>
           </Box>
-        )}
+        }
 
         <ListItem>
           <Button
@@ -221,11 +222,12 @@ function DashBoard(props) {
             <MenuIcon />
           </IconButton>
           
-            {admin ? <Typography variant="h6" noWrap component="div">
-              Admin DashBoard
-            </Typography>
-          
-            :
+          {admin === 'admin' &&  <Typography variant="h6" noWrap component="div">
+            Admin DashBoard
+          </Typography>
+            }
+            
+          {admin === 'user' &&
             <Typography variant="h6" noWrap component="div">
               Customer DashBoard
             </Typography>}
@@ -284,12 +286,12 @@ function DashBoard(props) {
           <Route path={`${path}/addProduct`}>
             <AddProduct></AddProduct>
           </Route>
-          {admin &&
+          {admin === 'admin' &&
             <Route exact path={`${path}`}>
               <MakeAdmin></MakeAdmin>
             </Route>}
           
-            {gUser && <Route exact path={`${path}`}>
+            {admin === 'user' && <Route exact path={`${path}`}>
               <MyOrders></MyOrders>
             </Route>}
           

@@ -15,10 +15,10 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  const [admin, setAdmin] = useState(false);
-  const [gUser, setGUser] = useState(false)
+  const [admin, setAdmin] = useState('');
+  const [gUser, setGUser] = useState('')
   
-
+console.log(admin)
   const auth = getAuth();
 
   const registerNewUser = (email, password, name, history) => {
@@ -73,7 +73,7 @@ const useFirebase = () => {
   useEffect(() => {
     fetch(`http://localhost:5000/users/${user?.email}`)
       .then((res) => res.json())
-      .then((data) => {data?.admin === true ? setAdmin(true): setGUser(true)})
+      .then((data) => {data?.admin === true ? setAdmin('admin'): setAdmin('user')})
   }, [user?.email]);
 
  
