@@ -67,7 +67,7 @@ const ManageOllOrders = () => {
               <tr className="bg-success text-white">
                 <th>#</th>
                 <th>Ordered BY</th>
-                <th>Adress</th>
+                <th>Product</th>
                 <th>Status</th>
                 <th>Manage Order</th>
               </tr>
