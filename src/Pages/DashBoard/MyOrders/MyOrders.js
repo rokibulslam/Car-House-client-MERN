@@ -14,7 +14,7 @@ const MyOrders = () => {
     fetch(`http://localhost:5000/orders/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
-  }, []);
+  }, [cancel]);
 
   console.log(orders);
   const handleDelete = (id) => {
@@ -28,7 +28,7 @@ const MyOrders = () => {
         .then((res) => {
           if (res.data.deletedCount) {
             alert("Your Order Has Canceled");
-            window.location.reload();
+            setCancel(res.data)
           }
         })
         .then((data) => setCancel(data));

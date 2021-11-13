@@ -62,6 +62,7 @@ const Purchase = () => {
         alert("New Order Successfully Placed for Approving");
       }
     });
+    
     e.preventDefault()
 
   };
@@ -116,9 +117,6 @@ const Purchase = () => {
                   </CardContent>
                 </CardActionArea>
                 <CardActions>
-                  <NavLink style={{ textDecoration: "none" }} to={`/purchase`}>
-                    <Button variant="contained">Purchase</Button>
-                  </NavLink>
                 </CardActions>
               </Card>
             </Box>
