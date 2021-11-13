@@ -4,6 +4,10 @@ import { HashLink } from "react-router-hash-link";
 
 import useAuth from "../../../Hooks/useAuth";
 import './Navigation.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCar
+} from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = () => {
   const { user, logout } = useAuth()
@@ -17,7 +21,12 @@ const Navigation = () => {
         expand="lg"
       >
         <Container>
-          <Navbar.Brand className="fw-bolder text-white">
+          <Navbar.Brand className="fw-bolder text-white align-items-center d-flex justify-content-center">
+            <FontAwesomeIcon
+              style={{ paddingRight: "10px" }}
+              icon={faCar}
+              size="2x"
+            />
             CarHouse
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -35,9 +44,9 @@ const Navigation = () => {
                 className="text-decoration-none fw-normal px-2 text-white"
                 to="/showroom"
               >
-               Our Vehicles
+                Our Vehicles
               </Nav.Link>
-              {user?.email &&
+              {user?.email && (
                 <Nav.Link
                   as={HashLink}
                   className="text-decoration-none fw-normal px-2  text-white"
@@ -45,7 +54,7 @@ const Navigation = () => {
                 >
                   Dashboard
                 </Nav.Link>
-              }
+              )}
 
               <Nav.Link
                 as={HashLink}

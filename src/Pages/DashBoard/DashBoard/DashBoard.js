@@ -44,17 +44,22 @@ function DashBoard(props) {
         <ListItem sx={{ color: "error.main", fontWeight: 600 }}>
           {admin === "admin" && (
             <Typography variant="h6" noWrap component="div">
+              <FontAwesomeIcon
+                style={{ paddingRight: "10px" }}
+                icon={faUser}
+                size="2x"
+              />
               Admin: {user?.displayName}
             </Typography>
           )}
-          {admin === 'user' &&
+          {admin === "user" && (
             <Typography variant="h6" noWrap component="div">
               User: {user?.displayName}
             </Typography>
-          }
+          )}
         </ListItem>
 
-        {admin === 'admin' &&
+        {admin === "admin" && (
           <Box>
             <ListItem>
               <NavLink
@@ -114,8 +119,9 @@ function DashBoard(props) {
               </NavLink>
             </ListItem>
           </Box>
-        }
-          {admin === 'user'&& <Box>
+        )}
+        {admin === "user" && (
+          <Box>
             <ListItem>
               <NavLink style={{ textDecoration: "none" }} to="/Home">
                 <Button variant="text" style={{ color: "inherit" }}>
@@ -177,7 +183,7 @@ function DashBoard(props) {
               </NavLink>
             </ListItem>
           </Box>
-        }
+        )}
 
         <ListItem>
           <Button
