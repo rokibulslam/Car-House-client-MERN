@@ -1,8 +1,9 @@
 .button {
     width: 110px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 900;
     text-align: center;
+    border: 2px solid #03ca03 ;
     background-color: #03ca03;
     border-radius: 50px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

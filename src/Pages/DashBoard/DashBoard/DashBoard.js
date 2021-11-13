@@ -24,6 +24,7 @@ import UpdateProduct from "../UpdateProduct/UpdateProduct";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faStore, faStar, faShoppingBag, faCartPlus, faTasks, faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import {faAmazonPay} from "@fortawesome/free-brands-svg-icons";
+import { text } from "@fortawesome/fontawesome-svg-core";
 const drawerWidth = 300;
 
 function DashBoard(props) {
@@ -180,7 +181,7 @@ function DashBoard(props) {
           </Box>
         )}
         <ListItem>
-          <Button onClick={logout} variant="text" style={{ color: "white" }}>
+          <Button onClick={logout} variant="text" sx={{color: 'text.primary'}}>
             <FontAwesomeIcon
               style={{ paddingRight: "10px" }}
               icon={faSignOutAlt}
