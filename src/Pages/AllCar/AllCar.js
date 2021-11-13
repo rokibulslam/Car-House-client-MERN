@@ -1,12 +1,14 @@
 import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
-import Cycle from "../Cycle/Cycle";
+import Car from "../Car/Car";
+import Footer from "../Footer/Footer";
 import Cycles from "../Home/Cycles/Cycles";
 import Navigation from "../Home/Navigation/Navigation";
+import Notfound from "../Notfound/Notfond";
 
 
-const AllCycle = () => {
+const AllCar = () => {
   const [cycles, setCycles] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/product")
@@ -23,13 +25,14 @@ const AllCycle = () => {
         <Box sx={{ flexGrow: 1, m: 5 }}>
           <Grid container spacing={4}>
             {cycles?.map((cycle) => (
-              <Cycle key={cycle.name} cycle={cycle}></Cycle>
+              <Car key={cycle.name} cycle={cycle}></Car>
             ))}
           </Grid>
         </Box>
       </Container>
+      <Footer></Footer>
     </div>
   );
 };
 
-export default AllCycle;
+export default AllCar;

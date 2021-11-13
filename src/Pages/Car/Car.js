@@ -3,7 +3,7 @@ import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia,  Con
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Cycle = (props) => {
+const Car = (props) => {
     
   const { _id, ProductName, price, description, imgURL } = props.cycle;
 
@@ -53,4 +53,4 @@ const Cycle = (props) => {
     );
 };
 
-export default Cycle;
+export default Car;

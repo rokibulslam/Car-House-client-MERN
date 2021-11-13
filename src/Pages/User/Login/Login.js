@@ -2,6 +2,7 @@ import { Alert, Button, CircularProgress, Container, TextField, Typography } fro
 import React, { useState } from "react";
 import { NavLink, useLocation, useHistory } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import Footer from "../../Footer/Footer";
 import Navigation from "../../Home/Navigation/Navigation";
 
 const Login = () => {
@@ -68,6 +69,7 @@ const Login = () => {
           {error && <Alert severity="error">{error}</Alert>}
         </form>
       </Container>
+      
     </div>
   );
 };

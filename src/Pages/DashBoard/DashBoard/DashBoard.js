@@ -21,6 +21,9 @@ import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import Review from "../Review/Review";
 import Payment from "../Payment/Payment";
 import UpdateProduct from "../UpdateProduct/UpdateProduct";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faStore, faStar, faShoppingBag, faCartPlus, faTasks, faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import {faAmazonPay} from "@fortawesome/free-brands-svg-icons";
 const drawerWidth = 240;
 
 function DashBoard(props) {
@@ -42,6 +45,11 @@ function DashBoard(props) {
         <ListItem>
           <NavLink style={{ textDecoration: "none" }} to="/Home">
             <Button variant="text" style={{ color: "inherit" }}>
+              <FontAwesomeIcon
+                style={{ paddingRight: "10px" }}
+                icon={faHome}
+                size="2x"
+              />
               Home
             </Button>
           </NavLink>
@@ -49,6 +57,11 @@ function DashBoard(props) {
         <ListItem>
           <NavLink style={{ textDecoration: "none" }} to="/showroom">
             <Button variant="text" style={{ color: "inherit" }}>
+              <FontAwesomeIcon
+                style={{ paddingRight: "10px" }}
+                icon={faStore}
+                size="2x"
+              />
               Showroom
             </Button>
           </NavLink>
@@ -58,6 +71,11 @@ function DashBoard(props) {
             <ListItem>
               <NavLink style={{ textDecoration: "none" }} to={`${url}/review`}>
                 <Button variant="text" style={{ color: "inherit" }}>
+                  <FontAwesomeIcon
+                    style={{ paddingRight: "10px" }}
+                    icon={faStar}
+                    size="2x"
+                  />
                   Review
                 </Button>
               </NavLink>
@@ -65,6 +83,11 @@ function DashBoard(props) {
             <ListItem>
               <NavLink style={{ textDecoration: "none" }} to={`${url}`}>
                 <Button variant="text" style={{ color: "inherit" }}>
+                  <FontAwesomeIcon
+                    style={{ paddingRight: "10px" }}
+                    icon={faShoppingBag}
+                    size="2x"
+                  />
                   My Orders
                 </Button>
               </NavLink>
@@ -72,6 +95,11 @@ function DashBoard(props) {
             <ListItem>
               <NavLink style={{ textDecoration: "none" }} to={`${url}/payment`}>
                 <Button variant="text" style={{ color: "inherit" }}>
+                  <FontAwesomeIcon
+                    style={{ paddingRight: "10px" }}
+                    icon={faAmazonPay}
+                    size="2x"
+                  />
                   Payment
                 </Button>
               </NavLink>
@@ -86,6 +114,11 @@ function DashBoard(props) {
                 to={`${url}/addProduct`}
               >
                 <Button variant="text" style={{ color: "inherit" }}>
+                  <FontAwesomeIcon
+                    style={{ paddingRight: "10px" }}
+                    icon={faCartPlus}
+                    size="2x"
+                  />
                   Add a Product
                 </Button>
               </NavLink>
@@ -96,6 +129,11 @@ function DashBoard(props) {
                 to={`${url}/manageProducts`}
               >
                 <Button variant="text" style={{ color: "inherit" }}>
+                  <FontAwesomeIcon
+                    style={{ paddingRight: "10px" }}
+                    icon={faTasks}
+                    size="2x"
+                  />
                   Manage Products
                 </Button>
               </NavLink>
@@ -106,6 +144,11 @@ function DashBoard(props) {
                 to={`${url}/manageOrders`}
               >
                 <Button variant="text" style={{ color: "inherit" }}>
+                  <FontAwesomeIcon
+                    style={{ paddingRight: "10px" }}
+                    icon={faTasks}
+                    size="2x"
+                  />
                   Manage All Orders
                 </Button>
               </NavLink>
@@ -113,6 +156,11 @@ function DashBoard(props) {
             <ListItem>
               <NavLink style={{ textDecoration: "none" }} to={`${url}`}>
                 <Button variant="text" style={{ color: "inherit" }}>
+                  <FontAwesomeIcon
+                    style={{ paddingRight: "10px" }}
+                    icon={faUser}
+                    size="2x"
+                  />
                   Make An Admin
                 </Button>
               </NavLink>
@@ -121,6 +169,11 @@ function DashBoard(props) {
         )}
         <ListItem>
           <Button onClick={logout} variant="text" style={{ color: "inherit" }}>
+            <FontAwesomeIcon
+              style={{ paddingRight: "10px" }}
+              icon={faSignOutAlt}
+              size="2x"
+            />{" "}
             LogOut
           </Button>
         </ListItem>

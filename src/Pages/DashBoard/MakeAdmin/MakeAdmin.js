@@ -39,10 +39,12 @@ const MakeAdmin = () => {
     
   return (
     <Box>
-      <Typography>Make An Admin</Typography>
+      <Typography sx={{ m: 5 }} variant="h2" component="div" gutterBottom>
+        Make A Admin
+      </Typography>
       <form onSubmit={handleAdminSubmit}>
-              <TextField
-                  required
+        <TextField
+          required
           sx={{ width: "50%" }}
           label="Email"
           type="email"
@@ -53,8 +55,10 @@ const MakeAdmin = () => {
           Make Admin
         </Button>
       </form>
-      {success === true && <Alert severity="success">Made Admin successfully!</Alert>}
-      {!success=== false && <Alert severity="error">User Not exist!</Alert>}
+      {success === true && (
+        <Alert severity="success">Made Admin successfully!</Alert>
+      )}
+      {!success === false && <Alert severity="error">User Not exist!</Alert>}
       <Container>
         <Box sx={{ m: 5 }}>
           <Grid container spacing={2}>

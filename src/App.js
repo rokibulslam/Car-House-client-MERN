@@ -5,9 +5,10 @@ import AuthProvider from "./Context/AuthProvider/AuthProvider";
 import Register from "./Pages/User/Register/Register";
 import Login from "./Pages/User/Login/Login";
 import Purchase from "./Pages/Purchase/Purchase";
-import AllCycle from "./Pages/AllCycle/AllCycle";
+import AllCar from "./Pages/AllCar/AllCar";
 import DashBoard from "./Pages/DashBoard/DashBoard/DashBoard";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import Notfound from "./Pages/Notfound/Notfond";
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
               <Login></Login>
             </Route>
             <Route path="/showroom">
-              <AllCycle></AllCycle>
+              <AllCar></AllCar>
             </Route>
             <PrivateRoute path="/dashboard">
               <DashBoard></DashBoard>
@@ -37,6 +38,9 @@ function App() {
             <PrivateRoute path="/purchase/:id">
               <Purchase></Purchase>
             </PrivateRoute>
+            <Route path="*">
+              <Notfound></Notfound>
+            </Route>
           </Switch>
         </Router>
       </AuthProvider>
