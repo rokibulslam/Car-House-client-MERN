@@ -7,7 +7,7 @@
 
     * This is a Dynamic Ecommerce site
     * This is a full-stack web development Project
-    * This time I used famous library Material UI
+    * This time I used famous CSS framework Material UI
     * I used Modern React framework for client side
     * Also used Bootstrap to beautify the site 
     * I have used most popular javascript runtime Node.js as backend language

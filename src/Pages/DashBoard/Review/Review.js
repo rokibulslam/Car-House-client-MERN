@@ -65,8 +65,8 @@ const Review = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-                      justifyContent: "center",
-            alignItems: 'center'
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <TextField
