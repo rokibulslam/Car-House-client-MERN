@@ -51,7 +51,7 @@ const Footer = () => {
             <div className="col-md-3 col-sm-12">
               <ul className="list-unstyled">
                 <li className="fw-bold">
-                  Get special offers, travel inspiration, and more from Vrbo
+                  Get special offers and more from Car House
                 </li>
               </ul>
               <Form.Control type="email" placeholder="Enter Your Email" />

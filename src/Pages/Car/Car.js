@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 const Car = (props) => {
     
-  const { _id, ProductName, price, description, imgURL } = props.cycle;
+  const { _id, ProductName, price, description, imgURL } = props.car;
 
     return (
       

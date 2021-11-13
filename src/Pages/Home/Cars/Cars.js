@@ -16,15 +16,15 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 
-const Cycles = () => {
+const Cars = () => {
   
-  const [allCycle, setAllCycle] = useState([])
+  const [allCar, setAllCar] = useState([])
   const { isLoading } = useAuth()
   
   useEffect(() => {
         fetch("https://protected-cliffs-11617.herokuapp.com/product")
           .then((res) => res.json())
-          .then((data) => setAllCycle(data));
+          .then((data) => setAllCar(data));
     },[])
   return (
     <Container>
@@ -34,9 +34,9 @@ const Cycles = () => {
       </Typography>
       <Box sx={{ flexGrow: 1, mt: 5, mb: 5 }}>
         <Grid container spacing={4}>
-          {allCycle.slice(0, 6)?.map((cycle) => (
+          {allCar.slice(0, 6)?.map((car) => (
             <Grid
-              key={cycle.ProductName}
+              key={car._id}
               sx={{ display: "flex", justifyContent: "center" }}
               item
               xs={12}
@@ -55,25 +55,25 @@ const Cycles = () => {
                   <CardMedia
                     component="img"
                     height="140"
-                    image={cycle.imgURL}
+                    image={car.imgURL}
                     alt="green iguana"
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      {}
+                      {car.ProductName}
                     </Typography>
                     <Typography gutterBottom variant="h5" component="div">
-                      Price:${cycle.price}
+                      Price:${car.price}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {cycle.description.slice(0, 100)}
+                      {car.description.slice(0, 100)}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
                 <CardActions>
                   <NavLink
                     style={{ textDecoration: "none" }}
-                    to={`/purchase/${cycle._id}`}
+                    to={`/purchase/${car._id}`}
                   >
                     <Button variant="contained">Purchase</Button>
                   </NavLink>
@@ -87,4 +87,4 @@ const Cycles = () => {
   );
 };
 
-export default Cycles;
+export default Cars;

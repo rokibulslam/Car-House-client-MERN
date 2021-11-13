@@ -40,7 +40,7 @@ const MakeAdmin = () => {
   return (
     <Box>
       <Typography sx={{ m: 5 }} variant="h2" component="div" gutterBottom>
-        Make A Admin
+        Make An Admin
       </Typography>
       <form onSubmit={handleAdminSubmit}>
         <TextField

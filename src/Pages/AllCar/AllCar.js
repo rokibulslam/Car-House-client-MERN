@@ -3,17 +3,17 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import Car from "../Car/Car";
 import Footer from "../Footer/Footer";
-import Cycles from "../Home/Cycles/Cycles";
+import Cars from "../Home/Cars/Cars";
 import Navigation from "../Home/Navigation/Navigation";
 import Notfound from "../Notfound/Notfond";
 
 
 const AllCar = () => {
-  const [cycles, setCycles] = useState([]);
+  const [cars, setCars] = useState([]);
   useEffect(() => {
     fetch("https://protected-cliffs-11617.herokuapp.com/product")
       .then((res) => res.json())
-      .then((data) => setCycles(data));
+      .then((data) => setCars(data));
   }, []);
   return (
     <div>
@@ -24,8 +24,8 @@ const AllCar = () => {
         </Typography>
         <Box sx={{ flexGrow: 1, m: 5 }}>
           <Grid container spacing={4}>
-            {cycles?.map((cycle) => (
-              <Car key={cycle.name} cycle={cycle}></Car>
+            {cars?.map((car) => (
+              <Car key={car.name} car={car}></Car>
             ))}
           </Grid>
         </Box>
