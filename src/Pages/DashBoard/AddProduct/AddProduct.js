@@ -14,12 +14,17 @@ const AddProduct = () => {
     setProduct(newOrderData);
   };
     const onSubmitAddProduct = (e) => {
-        axios.post("http://localhost:5000/product/addProduct", product).then((res) => {
-          if (res.data.insertedId) {
-            alert("New Product Added Successfully");
-            window.location.reload();
-          }
-        });
+        axios
+          .post(
+            "https://protected-cliffs-11617.herokuapp.com/product/addProduct",
+            product
+          )
+          .then((res) => {
+            if (res.data.insertedId) {
+              alert("New Product Added Successfully");
+              window.location.reload();
+            }
+          });
         e.preventDefault()
         console.log(product)
     }

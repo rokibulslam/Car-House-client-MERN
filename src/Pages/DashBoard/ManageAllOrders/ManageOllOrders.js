@@ -8,14 +8,14 @@ const ManageOllOrders = () => {
   const [update, setUpdate] = useState("");
   console.log(orders);
   useEffect(() => {
-    fetch("http://localhost:5000/orders")
+    fetch("https://protected-cliffs-11617.herokuapp.com/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [update]);
 
   const handlePending = (id, text) => {
     axios
-      .put(`http://localhost:5000/order/status/${id}`, {
+      .put(`https://protected-cliffs-11617.herokuapp.com/order/status/${id}`, {
         status: text,
       })
       .then((res) => {
@@ -27,9 +27,9 @@ const ManageOllOrders = () => {
             showConfirmButton: false,
             timer: 2000,
           });
-         setUpdate(res.data)
+          setUpdate(res.data);
         }
-      })
+      });
       
   };
 
@@ -40,7 +40,9 @@ const ManageOllOrders = () => {
 
     if (confirm) {
       axios
-        .delete(`http://localhost:5000/order/delete/${id}`)
+        .delete(
+          `https://protected-cliffs-11617.herokuapp.com/order/delete/${id}`
+        )
         .then((res) => {
           if (res.data.deletedCount) {
             Swal.fire({

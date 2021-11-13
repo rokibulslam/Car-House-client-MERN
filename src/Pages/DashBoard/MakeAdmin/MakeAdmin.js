@@ -12,7 +12,7 @@ const MakeAdmin = () => {
   };
   const handleAdminSubmit = (e) => {
     const user = { email };
-    fetch("http://localhost:5000/users/admin", {
+    fetch("https://protected-cliffs-11617.herokuapp.com/users/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -22,17 +22,16 @@ const MakeAdmin = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
-          setSuccess('true');
+          setSuccess("true");
+        } else {
+          setSuccess("false");
         }
-        else {
-            setSuccess('false');
-          }
       });
       console.log(success)
     e.preventDefault();
   };
     useEffect(() => {
-        fetch("http://localhost:5000/admins/admin")
+        fetch("https://protected-cliffs-11617.herokuapp.com/admins/admin")
           .then((res) => res.json())
           .then((data) => setAdmins(data));
     }, [success])

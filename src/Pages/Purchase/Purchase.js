@@ -35,7 +35,7 @@ const Purchase = () => {
   const { ProductName, price, brand, description, imgURL } = product;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${id}`)
+    fetch(`https://protected-cliffs-11617.herokuapp.com/product/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
@@ -59,17 +59,19 @@ const Purchase = () => {
       email: user?.email
     };
     console.log(order)
-    axios.post("http://localhost:5000/orders", order).then((res) => {
-      if (res.data.insertedId) {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Your order has been placed",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-      }
-    });
+    axios
+      .post("https://protected-cliffs-11617.herokuapp.com/orders", order)
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your order has been placed",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
+      });
     
     e.preventDefault()
 

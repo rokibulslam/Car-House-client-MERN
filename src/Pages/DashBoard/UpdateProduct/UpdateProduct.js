@@ -19,13 +19,14 @@ const UpdateProduct = () => {
   };
   const onSubmitAddProduct = (e) => {
     console.log(product);
-    axios.put(`http://localhost:5000/update/${id}`, product)
+    axios
+      .put(`https://protected-cliffs-11617.herokuapp.com/update/${id}`, product)
       .then((res) => {
-      if (res.data.acknowledged) {
-        alert("Updated Successfully");
-        window.location.reload();
-      }
-    });
+        if (res.data.acknowledged) {
+          alert("Updated Successfully");
+          window.location.reload();
+        }
+      });
     e.preventDefault();
     console.log(product);
   };

@@ -23,25 +23,27 @@ const ManageProducts = () => {
   const [deletes, setDeletes] = useState("");
   
   useEffect(() => {
-    fetch("http://localhost:5000/product")
+    fetch("https://protected-cliffs-11617.herokuapp.com/product")
       .then((res) => res.json())
-      .then((data) => setProducts(data))
+      .then((data) => setProducts(data));
   }, [deletes]);
 
   const handleDeleteProduct = (id) => {
     axios
-      .delete(`http://localhost:5000/product/delete/${id}`)
+      .delete(
+        `https://protected-cliffs-11617.herokuapp.com/product/delete/${id}`
+      )
       .then((res) => {
         if (res.data.deletedCount) {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Product has Deleted",
+            title: "Product has been Deleted",
             showConfirmButton: false,
             timer: 2000,
           });
         }
-      })
+      });
       
   };
 

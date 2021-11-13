@@ -11,7 +11,7 @@ import Notfound from "../Notfound/Notfond";
 const AllCar = () => {
   const [cycles, setCycles] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/product")
+    fetch("https://protected-cliffs-11617.herokuapp.com/product")
       .then((res) => res.json())
       .then((data) => setCycles(data));
   }, []);

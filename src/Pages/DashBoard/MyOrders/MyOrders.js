@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import useAuth from "../../../Hooks/useAuth";
 import "./MyOrders.css";
+import Swal from "sweetalert2";
 
 const MyOrders = () => {
   const { user } = useAuth();
@@ -11,7 +12,7 @@ const MyOrders = () => {
   const { email } = user;
   console.log(email);
   useEffect(() => {
-    fetch(`http://localhost:5000/orders/${user?.email}`)
+    fetch(`https://protected-cliffs-11617.herokuapp.com/orders/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [cancel]);
@@ -24,11 +25,19 @@ const MyOrders = () => {
 
     if (confirm) {
       axios
-        .delete(`http://localhost:5000/order/delete/${id}`)
+        .delete(
+          `https://protected-cliffs-11617.herokuapp.com/order/delete/${id}`
+        )
         .then((res) => {
           if (res.data.deletedCount) {
-            alert("Your Order Has Canceled");
-            setCancel(res.data)
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Order has been Cancelled Successfully",
+              showConfirmButton: false,
+              timer: 2000,
+            });
+            setCancel(res.data);
           }
         })
         .then((data) => setCancel(data));

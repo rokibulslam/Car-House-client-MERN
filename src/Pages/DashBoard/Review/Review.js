@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import axios from "axios";
 import React, { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Review = () => {
     
@@ -26,11 +27,19 @@ const Review = () => {
             star: star,
             customerName: user?.displayName,
         };
-        axios.post("http://localhost:5000/review", review).then((res) => {
-          if (res.data.insertedId) {
-            alert("Reviewed Successfully");
-          }
-        });
+        axios
+          .post("https://protected-cliffs-11617.herokuapp.com/review", review)
+          .then((res) => {
+            if (res.data.insertedId) {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Reviewed Successfully",
+                showConfirmButton: false,
+                timer: 2000,
+              });
+            }
+          });
         console.log(review)
         e.preventDefault()
     }
