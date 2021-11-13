@@ -5,7 +5,6 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Container,
   Grid,
   Typography,
 } from "@mui/material";
@@ -31,15 +30,16 @@ const ManageProducts = () => {
       .then((res) => {
         if (res.data.deletedCount) {
           alert("Product Has Deleted");
+         setDeletes(res.data)
         }
       })
-      .then((data) => setDeletes(data));
+      
   };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
-        {products.slice(0, 6)?.map((product) => (
+        {products?.map((product) => (
           <Grid
             key={product.ProductName}
             sx={{ display: "flex", justifyContent: "center" }}
@@ -65,9 +65,9 @@ const ManageProducts = () => {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    {}
+                    {product.ProductName}
                   </Typography>
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography sx={{color: 'error.main'}} gutterBottom variant="h5" component="div">
                     Price:${product.price}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">

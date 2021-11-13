@@ -4,13 +4,13 @@ import { Dropdown, DropdownButton, Table } from "react-bootstrap";
 
 const ManageOllOrders = () => {
   const [orders, setOrders] = useState([]);
-  const [deletes, setDelete] = useState("");
+  const [update, setUpdate] = useState("");
   console.log(orders);
   useEffect(() => {
     fetch("http://localhost:5000/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
-  }, [deletes]);
+  }, [update]);
 
   const handlePending = (id, text) => {
     axios
@@ -20,10 +20,10 @@ const ManageOllOrders = () => {
       .then((res) => {
         if (res.data.acknowledged) {
           alert("Approved Order");
-          window.location.reload();
+         setUpdate(res.data)
         }
       })
-      .then((data) => setDelete(data));
+      
   };
 
   const handleDelete = (id) => {
@@ -39,7 +39,7 @@ const ManageOllOrders = () => {
             alert("Your Order Has Canceled");
           }
         })
-        .then((data) => setDelete(data));
+        .then((data) => setUpdate(data));
     }
   };
   return (
