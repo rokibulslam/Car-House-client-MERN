@@ -32,7 +32,7 @@ function DashBoard(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   let { path, url } = useRouteMatch();
-  const { admin, logout, user, isLoading } = useAuth();
+  const { admin, logout, user, isLoading, gUser } = useAuth();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -48,7 +48,7 @@ function DashBoard(props) {
               Admin: {user?.displayName}
             </Typography>
           )}
-          {!admin && (
+          {gUser && (
             <Typography variant="h6" noWrap component="div">
               User: {user?.displayName}
             </Typography>
@@ -78,7 +78,7 @@ function DashBoard(props) {
             </Button>
           </NavLink>
         </ListItem>
-        {!admin && (
+        {gUser && (
           <Box>
             <ListItem>
               <NavLink style={{ textDecoration: "none" }} to={`${url}/review`}>
@@ -226,7 +226,7 @@ function DashBoard(props) {
               Admin DashBoard
             </Typography>
           )}
-          {!admin && (
+          {gUser && (
             <Typography variant="h6" noWrap component="div">
               Customer DashBoard
             </Typography>
@@ -290,7 +290,7 @@ function DashBoard(props) {
               <MakeAdmin></MakeAdmin>
             </Route>}
           
-            {!admin && <Route exact path={`${path}`}>
+            {gUser && <Route exact path={`${path}`}>
               <MyOrders></MyOrders>
             </Route>}
           
