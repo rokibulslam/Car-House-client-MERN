@@ -18,6 +18,8 @@ import { NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Navigation from "../Home/Navigation/Navigation";
 
+import Swal from "sweetalert2";
+
 const Purchase = () => {
   const { id } = useParams();
   const { user } = useAuth();
@@ -59,7 +61,13 @@ const Purchase = () => {
     console.log(order)
     axios.post("http://localhost:5000/orders", order).then((res) => {
       if (res.data.insertedId) {
-        alert("New Order Successfully Placed for Approving");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your order has been placed",
+          showConfirmButton: false,
+          timer: 2000,
+        });
       }
     });
     

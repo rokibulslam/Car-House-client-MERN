@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Dropdown, DropdownButton, Table } from "react-bootstrap";
+import Swal from "sweetalert2";
 
 const ManageOllOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -19,7 +20,13 @@ const ManageOllOrders = () => {
       })
       .then((res) => {
         if (res.data.acknowledged) {
-          alert("Approved Order");
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `Order has been ${text}`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
          setUpdate(res.data)
         }
       })
@@ -36,7 +43,13 @@ const ManageOllOrders = () => {
         .delete(`http://localhost:5000/order/delete/${id}`)
         .then((res) => {
           if (res.data.deletedCount) {
-            alert("Your Order Has Canceled");
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Order has been Cancelled Successfully",
+              showConfirmButton: false,
+              timer: 2000,
+            });
           }
         })
         .then((data) => setUpdate(data));
@@ -75,7 +88,7 @@ const ManageOllOrders = () => {
                     Service Name: {order.productName}
                   </td>
                   {order.status === "Approved" ? (
-                    <td className="text-white">{order.status}</td>
+                    <td className="text-success">{order.status}</td>
                   ) : (
                     <td className="text-danger">{order.status}</td>
                   )}

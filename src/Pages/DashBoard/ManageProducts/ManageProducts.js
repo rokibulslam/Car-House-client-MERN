@@ -15,6 +15,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const ManageProducts = () => {
   
@@ -32,15 +33,28 @@ const ManageProducts = () => {
       .delete(`http://localhost:5000/product/delete/${id}`)
       .then((res) => {
         if (res.data.deletedCount) {
-          alert("Product Has Deleted");
-         setDeletes(res.data)
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Product has Deleted",
+            showConfirmButton: false,
+            timer: 2000,
+          });
         }
       })
       
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}> 
+    <Box sx={{ flexGrow: 1 }}>
+      <Typography
+        sx={{ color: "error.main" , my: 5}}
+        gutterBottom
+        variant="h2"
+        component="div"
+      >
+        Manage All Products
+      </Typography>
       <Grid container spacing={2}>
         {products?.map((product) => (
           <Grid
