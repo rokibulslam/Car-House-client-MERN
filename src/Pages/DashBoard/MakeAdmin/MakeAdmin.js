@@ -10,6 +10,7 @@ const MakeAdmin = () => {
   const handleEmailInput = (e) => {
     setEmail(e.target.value);
   };
+  console.log(success)
   const handleAdminSubmit = (e) => {
     const user = { email };
     fetch("https://protected-cliffs-11617.herokuapp.com/users/admin", {
@@ -54,10 +55,10 @@ const MakeAdmin = () => {
           Make Admin
         </Button>
       </form>
-      {success === true && (
+      {success === 'true' && (
         <Alert severity="success">Made Admin successfully!</Alert>
       )}
-      {!success === false && <Alert severity="error">User Not exist!</Alert>}
+      {!success === 'false' && <Alert severity="error">User Not exist!</Alert>}
       <Container>
         <Box sx={{ m: 5 }}>
           <Grid container spacing={2}>
