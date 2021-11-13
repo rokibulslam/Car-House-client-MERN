@@ -24,24 +24,36 @@ import UpdateProduct from "../UpdateProduct/UpdateProduct";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faStore, faStar, faShoppingBag, faCartPlus, faTasks, faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import {faAmazonPay} from "@fortawesome/free-brands-svg-icons";
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 function DashBoard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   let { path, url } = useRouteMatch();
-  const { admin, logout } = useAuth();
+  const { admin, logout, user } = useAuth();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
-    <div>
+    <Box>
       <Toolbar />
-      <Divider />
+      
       <List>
+        <ListItem sx={{ color: "error.main", fontWeight: 600 }}>
+          {admin && (
+            <Typography variant="h6" noWrap component="div">
+              Admin: {admin?.displayName}
+            </Typography>
+          )}
+          {!admin && (
+            <Typography variant="h6" noWrap component="div">
+             User: {user?.displayName}
+            </Typography>
+          )}
+        </ListItem>
         <ListItem>
           <NavLink style={{ textDecoration: "none" }} to="/Home">
             <Button variant="text" style={{ color: "inherit" }}>
@@ -62,7 +74,7 @@ function DashBoard(props) {
                 icon={faStore}
                 size="2x"
               />
-              Showroom
+              Vehicles
             </Button>
           </NavLink>
         </ListItem>
@@ -168,7 +180,7 @@ function DashBoard(props) {
           </Box>
         )}
         <ListItem>
-          <Button onClick={logout} variant="text" style={{ color: "inherit" }}>
+          <Button onClick={logout} variant="text" style={{ color: "white" }}>
             <FontAwesomeIcon
               style={{ paddingRight: "10px" }}
               icon={faSignOutAlt}
@@ -178,7 +190,7 @@ function DashBoard(props) {
           </Button>
         </ListItem>
       </List>
-    </div>
+    </Box>
   );
 
   const container =
@@ -192,6 +204,7 @@ function DashBoard(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          bgcolor: "text.primary",
         }}
       >
         <Toolbar>
@@ -204,9 +217,16 @@ function DashBoard(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            DashBoard
-          </Typography>
+          {admin && (
+            <Typography variant="h6" noWrap component="div">
+              Admin DashBoard
+            </Typography>
+          )}
+          {!admin && (
+            <Typography variant="h6" noWrap component="div">
+              Customer DashBoard
+            </Typography>
+          )}
         </Toolbar>
       </AppBar>
       <Box
@@ -260,12 +280,15 @@ function DashBoard(props) {
           <Route path={`${path}/addProduct`}>
             <AddProduct></AddProduct>
           </Route>
-          {admin ? <Route exact path={`${path}`}>
-            <MakeAdmin></MakeAdmin>
-          </Route>:
-          <Route exact path={`${path}`}>
-            <MyOrders></MyOrders>
-          </Route>}
+          {admin ? (
+            <Route exact path={`${path}`}>
+              <MakeAdmin></MakeAdmin>
+            </Route>
+          ) : (
+            <Route exact path={`${path}`}>
+              <MyOrders></MyOrders>
+            </Route>
+          )}
 
           <Route path={`${path}/manageOrders`}>
             <ManageOllOrders></ManageOllOrders>
