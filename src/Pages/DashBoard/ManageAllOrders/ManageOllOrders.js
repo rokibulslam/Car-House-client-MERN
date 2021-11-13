@@ -43,13 +43,13 @@ const ManageOllOrders = () => {
     }
   };
   return (
-    <div className="mt-0 p-5 bg-order">
+    <div className="my-0 p-5 table-bg">
       <div className="container ">
         <div>
-          <h1 className="fw-light">Manage All Orders</h1>
-          <Table responsive="sm" striped bordered hover variant="dark">
+          <h1 className="fw-light text-white">Manage All Orders</h1>
+          <Table responsive striped bordered hover>
             <thead>
-              <tr>
+              <tr className="bg-success text-white">
                 <th>#</th>
                 <th>Ordered BY</th>
                 <th>Adress</th>
@@ -59,13 +59,13 @@ const ManageOllOrders = () => {
             </thead>
             {orders?.map((order) => (
               <tbody>
-                <tr>
+                <tr className="py-5 bg-white text-white">
                   <td>1</td>
                   <td>
                     Customer Name: {order.customerName} <br />
-                    Country: {order.adress}
+                    Country: {order.country}
                     <br />
-                    Email: {order.acoountMail}
+                    Email: {order.email}
                     <br />
                     Phone No: {order.phone}
                   </td>
@@ -106,7 +106,7 @@ const ManageOllOrders = () => {
                           className="btn btn-warning "
                           onClick={() => handleDelete(order._id)}
                         >
-                          Cancel Order
+                          Reject Order
                         </button>
                       </Dropdown.Item>
                     </DropdownButton>

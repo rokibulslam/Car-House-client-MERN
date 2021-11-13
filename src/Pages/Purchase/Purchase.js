@@ -27,8 +27,7 @@ const Purchase = () => {
     
   const [product, setProduct] = useState({});
   const [orderData, setOrderData] = useState({
-    customerName: user.displayName,
-    email: user?.email, accountMail: user?.email
+    
   });
   console.log(orderData)
   const { ProductName, price, brand, description, imgURL } = product;
@@ -54,6 +53,8 @@ const Purchase = () => {
       status: "Pending",
       productName: ProductName,
       productPrice: price,
+      customerName: user.displayName,
+      email: user?.email
     };
     console.log(order)
     axios.post("http://localhost:5000/orders", order).then((res) => {
@@ -68,25 +69,28 @@ const Purchase = () => {
     <Box>
       <Navigation></Navigation>
       <Typography
-        sx={{ textAlign: "start", mt: 5 }}
+        sx={{ textAlign: "center", mt: 5 }}
         variant="h2"
         component="div"
         gutterBottom
       >
-        User Name : {user.displayName}
+        Purchase
       </Typography>
-      <Typography
-        sx={{ textAlign: "start", mt: 5 }}
-        variant="h2"
-        component="div"
-        gutterBottom
-      >
-        User Email: {user.email}
-      </Typography>
+      <Container>
+        <Typography
+          sx={{ textAlign: "start", mt: 5, color: "error.main" }}
+          variant="h7"
+          component="div"
+          gutterBottom
+        >
+          User Name :  {user.displayName} <br />
+          User Email : {user.email}
+        </Typography>
+      </Container>
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
-            <Box sx={{ m: 5 }}>
+            <Box sx={{ my: 5 }}>
               <Card>
                 <CardActionArea>
                   <CardMedia
@@ -134,21 +138,20 @@ const Purchase = () => {
                   <TextField
                     // required
                     sx={{ width: "90%", m: 1 }}
-                    id="filled-basic"
-                    label="Your Name"
+                    disabled
+                    id="outlined-basic"
+                    label={user?.displayName}
                     name="customerName"
                     onBlur={handelOrderField}
-                    variant="filled"
+                    variant="outlined"
                   />
                   <TextField
-                    
                     sx={{ width: "90%", m: 1 }}
-                    id="filled-basic"
-                    label="email"
+                    disabled
+                    id="outlined-basic"
+                    label={user.email}
                     type="email"
-                    name="email"
-                    onBlur={handelOrderField}
-                    variant="filled"
+                    variant="outlined"
                   />
                   <TextField
                     required
@@ -164,10 +167,38 @@ const Purchase = () => {
                     required
                     sx={{ width: "90%", m: 1 }}
                     id="filled-basic"
-                    label="Adress"
-                    name="adress"
+                    label="City"
+                    name="city"
                     onBlur={handelOrderField}
                     variant="filled"
+                  />
+                  <TextField
+                    required
+                    sx={{ width: "90%", m: 1 }}
+                    id="filled-basic"
+                    label="Post-Code"
+                    name="postCode"
+                    onBlur={handelOrderField}
+                    variant="filled"
+                  />
+                  <TextField
+                    required
+                    sx={{ width: "90%", m: 1 }}
+                    id="filled-basic"
+                    label="Country"
+                    name="country"
+                    onBlur={handelOrderField}
+                    variant="filled"
+                  />
+                  <TextField
+                    // required
+                    sx={{ width: "90%", m: 1 }}
+                    disabled
+                    id="outlined-basic"
+                    label={currentDate}
+                    name="customerName"
+                    onBlur={handelOrderField}
+                    variant="outlined"
                   />
 
                   <Button
@@ -175,7 +206,7 @@ const Purchase = () => {
                     type="submit"
                     variant="contained"
                   >
-                    Add Product
+                    Add Cart
                   </Button>
                 </form>
               </Container>
