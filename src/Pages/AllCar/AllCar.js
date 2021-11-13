@@ -20,7 +20,7 @@ const AllCar = () => {
       <Navigation></Navigation>
       <Container>
         <Typography sx={{ mt: 5 }} variant="h2" component="div" gutterBottom>
-          Explore Our Bi-Cycle
+          Explore Our Exclusive Car
         </Typography>
         <Box sx={{ flexGrow: 1, m: 5 }}>
           <Grid container spacing={4}>

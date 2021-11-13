@@ -42,83 +42,18 @@ function DashBoard(props) {
       <Toolbar />
       <List>
         <ListItem sx={{ color: "error.main", fontWeight: 600 }}>
-          
-          {admin && (
+          {admin ? (
             <Typography variant="h6" noWrap component="div">
               Admin: {user?.displayName}
             </Typography>
-          )}
-          {gUser && (
+          ) : (
             <Typography variant="h6" noWrap component="div">
               User: {user?.displayName}
             </Typography>
           )}
         </ListItem>
-        <ListItem>
-          <NavLink style={{ textDecoration: "none" }} to="/Home">
-            <Button variant="text" style={{ color: "inherit" }}>
-              <FontAwesomeIcon
-                style={{ paddingRight: "10px" }}
-                icon={faHome}
-                size="2x"
-              />
-              Home
-            </Button>
-          </NavLink>
-        </ListItem>
-        <ListItem>
-          <NavLink style={{ textDecoration: "none" }} to="/showroom">
-            <Button variant="text" style={{ color: "inherit" }}>
-              <FontAwesomeIcon
-                style={{ paddingRight: "10px" }}
-                icon={faStore}
-                size="2x"
-              />
-              Vehicles
-            </Button>
-          </NavLink>
-        </ListItem>
-        {gUser && (
-          <Box>
-            <ListItem>
-              <NavLink style={{ textDecoration: "none" }} to={`${url}/review`}>
-                <Button variant="text" style={{ color: "inherit" }}>
-                  <FontAwesomeIcon
-                    style={{ paddingRight: "10px" }}
-                    icon={faStar}
-                    size="2x"
-                  />
-                  Review
-                </Button>
-              </NavLink>
-            </ListItem>
-            <ListItem>
-              <NavLink style={{ textDecoration: "none" }} to={`${url}`}>
-                <Button variant="text" style={{ color: "inherit" }}>
-                  <FontAwesomeIcon
-                    style={{ paddingRight: "10px" }}
-                    icon={faShoppingBag}
-                    size="2x"
-                  />
-                  My Orders
-                </Button>
-              </NavLink>
-            </ListItem>
-            <ListItem>
-              <NavLink style={{ textDecoration: "none" }} to={`${url}/payment`}>
-                <Button variant="text" style={{ color: "inherit" }}>
-                  <FontAwesomeIcon
-                    style={{ paddingRight: "10px" }}
-                    icon={faAmazonPay}
-                    size="2x"
-                  />
-                  Payment
-                </Button>
-              </NavLink>
-            </ListItem>
-          </Box>
-        )}
-        {admin && (
+
+        {admin ? (
           <Box>
             <ListItem>
               <NavLink
@@ -178,7 +113,71 @@ function DashBoard(props) {
               </NavLink>
             </ListItem>
           </Box>
+        ) : (
+          <Box>
+            <ListItem>
+              <NavLink style={{ textDecoration: "none" }} to="/Home">
+                <Button variant="text" style={{ color: "inherit" }}>
+                  <FontAwesomeIcon
+                    style={{ paddingRight: "10px" }}
+                    icon={faHome}
+                    size="2x"
+                  />
+                  Home
+                </Button>
+              </NavLink>
+            </ListItem>
+            <ListItem>
+              <NavLink style={{ textDecoration: "none" }} to="/showroom">
+                <Button variant="text" style={{ color: "inherit" }}>
+                  <FontAwesomeIcon
+                    style={{ paddingRight: "10px" }}
+                    icon={faStore}
+                    size="2x"
+                  />
+                  Vehicles
+                </Button>
+              </NavLink>
+            </ListItem>
+            <ListItem>
+              <NavLink style={{ textDecoration: "none" }} to={`${url}/review`}>
+                <Button variant="text" style={{ color: "inherit" }}>
+                  <FontAwesomeIcon
+                    style={{ paddingRight: "10px" }}
+                    icon={faStar}
+                    size="2x"
+                  />
+                  Review
+                </Button>
+              </NavLink>
+            </ListItem>
+            <ListItem>
+              <NavLink style={{ textDecoration: "none" }} to={`${url}`}>
+                <Button variant="text" style={{ color: "inherit" }}>
+                  <FontAwesomeIcon
+                    style={{ paddingRight: "10px" }}
+                    icon={faShoppingBag}
+                    size="2x"
+                  />
+                  My Orders
+                </Button>
+              </NavLink>
+            </ListItem>
+            <ListItem>
+              <NavLink style={{ textDecoration: "none" }} to={`${url}/payment`}>
+                <Button variant="text" style={{ color: "inherit" }}>
+                  <FontAwesomeIcon
+                    style={{ paddingRight: "10px" }}
+                    icon={faAmazonPay}
+                    size="2x"
+                  />
+                  Payment
+                </Button>
+              </NavLink>
+            </ListItem>
+          </Box>
         )}
+
         <ListItem>
           <Button
             onClick={logout}
@@ -221,16 +220,16 @@ function DashBoard(props) {
           >
             <MenuIcon />
           </IconButton>
-          {admin && (
-            <Typography variant="h6" noWrap component="div">
+          
+            {admin ? <Typography variant="h6" noWrap component="div">
               Admin DashBoard
             </Typography>
-          )}
-          {gUser && (
+          
+            :
             <Typography variant="h6" noWrap component="div">
               Customer DashBoard
-            </Typography>
-          )}
+            </Typography>}
+          
         </Toolbar>
       </AppBar>
       <Box
