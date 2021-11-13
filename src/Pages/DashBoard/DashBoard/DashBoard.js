@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
-import { Button, List, ListItem } from "@mui/material";
+import { Button, CircularProgress, List, ListItem } from "@mui/material";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import AddProduct from "../AddProduct/AddProduct";
@@ -32,8 +32,7 @@ function DashBoard(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   let { path, url } = useRouteMatch();
-  const { admin, logout, user } = useAuth();
-
+  const { admin, logout, user, isLoading } = useAuth();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -41,17 +40,17 @@ function DashBoard(props) {
   const drawer = (
     <Box>
       <Toolbar />
-      
       <List>
         <ListItem sx={{ color: "error.main", fontWeight: 600 }}>
+          
           {admin && (
             <Typography variant="h6" noWrap component="div">
-              Admin: {admin?.displayName}
+              Admin: {user?.displayName}
             </Typography>
           )}
           {!admin && (
             <Typography variant="h6" noWrap component="div">
-             User: {user?.displayName}
+              User: {user?.displayName}
             </Typography>
           )}
         </ListItem>
@@ -181,7 +180,11 @@ function DashBoard(props) {
           </Box>
         )}
         <ListItem>
-          <Button onClick={logout} variant="text" sx={{color: 'text.primary'}}>
+          <Button
+            onClick={logout}
+            variant="text"
+            sx={{ color: "text.primary" }}
+          >
             <FontAwesomeIcon
               style={{ paddingRight: "10px" }}
               icon={faSignOutAlt}
@@ -278,18 +281,19 @@ function DashBoard(props) {
       >
         <Toolbar />
         <Switch>
+          
           <Route path={`${path}/addProduct`}>
             <AddProduct></AddProduct>
           </Route>
-          {admin ? (
+          {admin &&
             <Route exact path={`${path}`}>
               <MakeAdmin></MakeAdmin>
-            </Route>
-          ) : (
-            <Route exact path={`${path}`}>
+            </Route>}
+          
+            {!admin && <Route exact path={`${path}`}>
               <MyOrders></MyOrders>
-            </Route>
-          )}
+            </Route>}
+          
 
           <Route path={`${path}/manageOrders`}>
             <ManageOllOrders></ManageOllOrders>

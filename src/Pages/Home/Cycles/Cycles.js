@@ -5,6 +5,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  CircularProgress,
   Container,
   Grid,
   Typography,
@@ -13,17 +14,22 @@ import { Box } from "@mui/system";
 
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 
 const Cycles = () => {
   
-    const [allCycle, setAllCycle] = useState([])
-    useEffect(() => {
+  const [allCycle, setAllCycle] = useState([])
+  const { isLoading } = useAuth()
+  
+  useEffect(() => {
         fetch("http://localhost:5000/product")
           .then((res) => res.json())
-          .then((data) => setAllCycle(data));
+          .then((data) => setAllCycle(data))
     },[])
-    return (
-      <Container>
+  return (
+      
+    <Container>
+      {isLoading && <CircularProgress/>}
         <Typography sx={{ mt: 5 }} variant="h2" component="div" gutterBottom>
           Bi-cycle! Bi-cycle! I want to ride my bike.
         </Typography>

@@ -5,6 +5,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  CircularProgress,
   Grid,
   Typography,
 } from "@mui/material";
@@ -13,15 +14,17 @@ import axios from "axios";
 
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 
 const ManageProducts = () => {
+  
   const [products, setProducts] = useState([]);
   const [deletes, setDeletes] = useState("");
-
+  
   useEffect(() => {
     fetch("http://localhost:5000/product")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => setProducts(data))
   }, [deletes]);
 
   const handleDeleteProduct = (id) => {
@@ -37,7 +40,7 @@ const ManageProducts = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }}> 
       <Grid container spacing={2}>
         {products?.map((product) => (
           <Grid
@@ -67,7 +70,12 @@ const ManageProducts = () => {
                   <Typography gutterBottom variant="h5" component="div">
                     {product.ProductName}
                   </Typography>
-                  <Typography sx={{color: 'error.main'}} gutterBottom variant="h5" component="div">
+                  <Typography
+                    sx={{ color: "error.main" }}
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                  >
                     Price:${product.price}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
