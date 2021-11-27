@@ -2,7 +2,7 @@
 
 ### Here is my live Demo site 
  [Car House](https://car-house-b6b2f.web.app/).
-### This is a full stack MERN project
+### This is a MERN stack project
 ### Features of CAR HOUSE
 
     * This is Car selling responsive single-page web application with a secured login system functionality developed with firebase authentication
