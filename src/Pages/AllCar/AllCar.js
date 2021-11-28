@@ -18,18 +18,21 @@ const AllCar = () => {
   return (
     <div>
       <Navigation></Navigation>
-      <Container>
-        <Typography sx={{ mt: 5 }} variant="h2" component="div" gutterBottom>
-          Explore Our Exclusive Car
-        </Typography>
-        <Box sx={{ flexGrow: 1, m: 5 }}>
-          <Grid container spacing={4}>
-            {cars?.map((car) => (
-              <Car key={car.name} car={car}></Car>
-            ))}
-          </Grid>
-        </Box>
-      </Container>
+      <div>
+        <h1 className="explore-header-bg">Explore Our Exclusive Car</h1>
+        <Container>
+          {/* <Typography sx={{ mt: 5 }} variant="h2" component="div" gutterBottom>
+            Explore Our Exclusive Car
+          </Typography> */}
+          <Box sx={{ flexGrow: 1, m: 5 }}>
+            <Grid container spacing={4}>
+              {cars?.map((car) => (
+                <Car key={car.name} car={car}></Car>
+              ))}
+            </Grid>
+          </Box>
+        </Container>
+      </div>
       <Footer></Footer>
     </div>
   );

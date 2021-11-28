@@ -27,16 +27,16 @@ const Cars = () => {
           .then((data) => setAllCar(data));
     },[])
   return (
-    <div>
+    <div className="explore-bg">
       <div>
         <h1 className="explore-header-bg">More Than 300 Cars Added Daily</h1>
       </div>
-      <Container>
+      <Container sx={{ pt: 5, pb: 5 }}>
         {isLoading && <CircularProgress />}
         {/* <Typography sx={{ mt: 5 }} variant="h2" component="div" gutterBottom>
         More than 300 cars added daily
       </Typography> */}
-        <Box sx={{ flexGrow: 1, mt: 5, mb: 5 }}>
+        <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={4}>
             {allCar.slice(0, 6)?.map((car) => (
               <Grid
@@ -51,14 +51,14 @@ const Cars = () => {
                     maxWidth: 345,
                     display: "flex",
                     textAlign: "start",
-                    justifyContent: "flex-end",
+                    justifyContent: "space-between",
                     flexDirection: "column",
                   }}
                 >
                   <CardActionArea>
                     <CardMedia
                       component="img"
-                      height="140"
+                      height="150"
                       image={car.imgURL}
                       alt="green iguana"
                     />
@@ -74,7 +74,9 @@ const Cars = () => {
                       </Typography>
                     </CardContent>
                   </CardActionArea>
-                  <CardActions>
+                  <CardActions
+                    
+                  >
                     <NavLink
                       style={{ textDecoration: "none" }}
                       to={`/purchase/${car._id}`}

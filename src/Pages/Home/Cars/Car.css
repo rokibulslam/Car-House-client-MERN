@@ -1,10 +1,15 @@
 .explore-header-bg{
-    background-color: rgb(157, 49, 239);
+    background-color: 	#000080;
     padding: 50px 100px 50px 100px;
     color: white;
     font-size: 4em;
 }
 .explore-header-bg:hover {
     transition: 3s;
-    background-color: rgb(245, 7, 7);
+    background-color: rgb(3, 3, 3);
 }
+.explore-bg{
+    background-color: #fdf9f3;
+    
+}
+
