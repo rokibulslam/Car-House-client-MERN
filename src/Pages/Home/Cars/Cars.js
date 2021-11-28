@@ -19,12 +19,15 @@ import useAuth from "../../../Hooks/useAuth";
 const Cars = () => {
   
   const [allCar, setAllCar] = useState([])
-  const { isLoading } = useAuth()
+  const { isLoading, setIsLoading } = useAuth();
   
   useEffect(() => {
+        setIsLoading(true)
         fetch("https://protected-cliffs-11617.herokuapp.com/product")
           .then((res) => res.json())
-          .then((data) => setAllCar(data));
+          .then((data) => setAllCar(data))
+          .catch(() => {})
+          .finally(() => setIsLoading(false));
     },[])
   return (
     <div className="explore-bg">
@@ -33,9 +36,6 @@ const Cars = () => {
       </div>
       <Container sx={{ pt: 5, pb: 5 }}>
         {isLoading && <CircularProgress />}
-        {/* <Typography sx={{ mt: 5 }} variant="h2" component="div" gutterBottom>
-        More than 300 cars added daily
-      </Typography> */}
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={4}>
             {allCar.slice(0, 6)?.map((car) => (
@@ -74,9 +74,7 @@ const Cars = () => {
                       </Typography>
                     </CardContent>
                   </CardActionArea>
-                  <CardActions
-                    
-                  >
+                  <CardActions>
                     <NavLink
                       style={{ textDecoration: "none" }}
                       to={`/purchase/${car._id}`}

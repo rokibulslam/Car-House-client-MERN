@@ -1,6 +1,7 @@
-import { Container, Grid, Typography } from "@mui/material";
+import { CircularProgress, Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
+import useAuth from "../../Hooks/useAuth";
 import Car from "../Car/Car";
 import Footer from "../Footer/Footer";
 import Cars from "../Home/Cars/Cars";
@@ -10,10 +11,15 @@ import Notfound from "../Notfound/Notfond";
 
 const AllCar = () => {
   const [cars, setCars] = useState([]);
+  const { isLoading, setIsLoading } = useAuth();
+  
   useEffect(() => {
+    setIsLoading(true);
     fetch("https://protected-cliffs-11617.herokuapp.com/product")
       .then((res) => res.json())
-      .then((data) => setCars(data));
+      .then((data) => setCars(data))
+      .catch((error) => {})
+      .finally(() => setIsLoading(false));
   }, []);
   return (
     <div>
@@ -21,9 +27,7 @@ const AllCar = () => {
       <div>
         <h1 className="explore-header-bg">Explore Our Exclusive Car</h1>
         <Container>
-          {/* <Typography sx={{ mt: 5 }} variant="h2" component="div" gutterBottom>
-            Explore Our Exclusive Car
-          </Typography> */}
+          {isLoading && <CircularProgress />}
           <Box sx={{ flexGrow: 1, m: 5 }}>
             <Grid container spacing={4}>
               {cars?.map((car) => (
