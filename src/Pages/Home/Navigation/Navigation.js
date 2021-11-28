@@ -72,7 +72,7 @@ const Navigation = () => {
               ) : (
                 <Nav.Link
                   as={HashLink}
-                  className="button text-white m-2"
+                  className="button text-white mx-2"
                   to="/login"
                 >
                   Sign in
