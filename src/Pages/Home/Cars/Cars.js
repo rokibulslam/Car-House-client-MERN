@@ -26,13 +26,13 @@ const Cars = () => {
         fetch("https://protected-cliffs-11617.herokuapp.com/product")
           .then((res) => res.json())
           .then((data) => setAllCar(data))
-          .catch(() => {})
+          .catch((error) => {})
           .finally(() => setIsLoading(false));
     },[])
   return (
     <div className="explore-bg">
       <div>
-        <h1 className="explore-header-bg">More Than 300 Cars Added Daily</h1>
+        <h1 className="explore-header-bg fw-light">More Than 300 Cars Added Daily</h1>
       </div>
       <Container sx={{ pt: 5, pb: 5 }}>
         {isLoading && <CircularProgress />}

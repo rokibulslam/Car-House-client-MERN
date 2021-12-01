@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import Navigation from "../../Home/Navigation/Navigation";
-
+import './Register.css'
 const Register = () => {
     const [registerData, setRegisterData] = useState({});
     const { user,  isLoading, error, registerNewUser } = useAuth()
@@ -30,9 +30,9 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className=" register">
       <Navigation></Navigation>
-      <Container>
+      <Container className="form-banner">
         <Typography sx={{ mt: 5 }} variant="h2" component="div" gutterBottom>
           Register
         </Typography>

@@ -3,8 +3,8 @@
     font-size: 16px;
     font-weight: 900;
     text-align: center;
-    border: 2px solid rgb(49, 239, 176);
-    background-color: rgb(0, 250, 42);
+    border: 2px solid rgb(7, 7, 7);
+    background-color: rgb(8, 8, 8);
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
@@ -16,5 +16,5 @@
 
 .nav-color {
     /* background-image: radial-gradient( circle 610px at 5.2% 51.6%,  rgba(5,8,114,1) 0%, rgba(7,3,53,1) 97.5% ); */
-    background-color: #fc0c04;
+    background-color: rgb(225, 220, 214);
 }

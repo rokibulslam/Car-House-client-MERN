@@ -4,7 +4,7 @@ import { NavLink, useLocation, useHistory } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import Footer from "../../Footer/Footer";
 import Navigation from "../../Home/Navigation/Navigation";
-
+import './Login.css'
 const Login = () => {
   const [loginData, setLoginData] = useState({})
     const { user, error, loginUser, isLoading } = useAuth();
@@ -26,9 +26,9 @@ const Login = () => {
      };
     
   return (
-    <div>
+    <div className="register">
       <Navigation></Navigation>
-      <Container>
+      <Container className="form-banner">
         <Typography sx={{ mt: 5 }} variant="h2" component="div" gutterBottom>
           Login Here
         </Typography>

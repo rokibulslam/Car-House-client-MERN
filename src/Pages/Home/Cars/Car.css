@@ -1,12 +1,13 @@
 .explore-header-bg{
-    background-color: 	#000080;
+    background-image: linear-gradient( 109.6deg,  rgba(223,234,247,1) 11.2%, rgba(244,248,252,1) 91.1% );
     padding: 50px 100px 50px 100px;
-    color: white;
+    color: black;
     font-size: 4em;
+    transition: 3s;
 }
 .explore-header-bg:hover {
-    transition: 3s;
-    background-color: rgb(3, 3, 3);
+    
+    background-image: linear-gradient( 89.9deg,  rgba(208,246,255,1) 0.1%, rgba(255,237,237,1) 47.9%, rgba(255,255,231,1) 100.2% );
 }
 .explore-bg{
     background-color: #fdf9f3;

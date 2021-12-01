@@ -21,7 +21,7 @@ const Navigation = () => {
         expand="lg"
       >
         <Container>
-          <Navbar.Brand className="fw-bolder text-white align-items-center d-flex justify-content-center">
+          <Navbar.Brand className="fw-bolder text-black align-items-center d-flex justify-content-center">
             <FontAwesomeIcon
               style={{ paddingRight: "10px" }}
               icon={faCar}
@@ -34,14 +34,14 @@ const Navigation = () => {
             <Nav className="me-auto">
               <Nav.Link
                 as={HashLink}
-                className="text-decoration-none fw-normal text-white"
+                className="text-decoration-none fw-normal text-black"
                 to="/home#home"
               >
                 Home
               </Nav.Link>
               <Nav.Link
                 as={HashLink}
-                className="text-decoration-none fw-normal px-2 text-white"
+                className="text-decoration-none fw-normal px-2 text-black"
                 to="/showroom"
               >
                 Our Vehicles
@@ -49,7 +49,7 @@ const Navigation = () => {
               {user?.email && (
                 <Nav.Link
                   as={HashLink}
-                  className="text-decoration-none fw-normal px-2  text-white"
+                  className="text-decoration-none fw-normal px-2  text-black"
                   to="/dashboard"
                 >
                   Dashboard
@@ -58,7 +58,7 @@ const Navigation = () => {
 
               <Nav.Link
                 as={HashLink}
-                className="text-decoration-none px-2  fw-normal text-white"
+                className="text-decoration-none px-2  fw-normal text-black"
                 to="/about"
               >
                 About Us
@@ -72,18 +72,18 @@ const Navigation = () => {
               ) : (
                 <Nav.Link
                   as={HashLink}
-                  className="button text-white mx-2"
+                  className="button text-white mt-1 mx-2"
                   to="/login"
                 >
                   Sign in
                 </Nav.Link>
               )}
               {user?.email ? (
-                <p className="mb-0 ps-3 text-white"> {user.displayName}</p>
+                <p className="mb-0 ps-3 "> {user.displayName}</p>
               ) : (
                 <Nav.Link
                   as={HashLink}
-                  className="button text-white"
+                  className="button text-white mt-1"
                   to="/register"
                 >
                   Sign Up

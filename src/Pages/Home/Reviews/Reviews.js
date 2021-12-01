@@ -13,7 +13,7 @@ const Reviews = () => {
   return (
     <div className="review-bg ">
       <h1 className="text-white">Customer Reviews</h1>
-      <Box sx={{ my: 5 }}>
+      <Box sx={{ py: 5 }}>
         <Container>
           {/* <Typography sx={{ mt: 5 }} variant="h2" component="div" gutterBottom>
             Customer Reviews
