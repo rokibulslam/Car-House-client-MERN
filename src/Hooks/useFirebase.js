@@ -71,7 +71,7 @@ console.log(admin)
   }, [auth]);
 
   useEffect(() => {
-    fetch(`https://protected-cliffs-11617.herokuapp.com/users/${user?.email}`)
+    fetch(`https://car-house-server.onrender.com/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         data?.admin === true ? setAdmin("admin") : setAdmin("user");
@@ -94,7 +94,7 @@ console.log(admin)
 
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName};
-    fetch("https://protected-cliffs-11617.herokuapp.com/users", {
+    fetch("https://car-house-server.onrender.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",

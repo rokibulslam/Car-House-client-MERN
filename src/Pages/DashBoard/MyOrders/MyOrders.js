@@ -12,7 +12,7 @@ const MyOrders = () => {
   const { email } = user;
   console.log(email);
   useEffect(() => {
-    fetch(`https://protected-cliffs-11617.herokuapp.com/orders/${user?.email}`)
+    fetch(`https://car-house-server.onrender.com/orders/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [cancel]);
@@ -25,9 +25,7 @@ const MyOrders = () => {
 
     if (confirm) {
       axios
-        .delete(
-          `https://protected-cliffs-11617.herokuapp.com/order/delete/${id}`
-        )
+        .delete(`https://car-house-server.onrender.com/order/delete/${id}`)
         .then((res) => {
           if (res.data.deletedCount) {
             Swal.fire({

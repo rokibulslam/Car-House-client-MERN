@@ -13,7 +13,7 @@ const MakeAdmin = () => {
   console.log(success)
   const handleAdminSubmit = (e) => {
     const user = { email };
-    fetch("https://protected-cliffs-11617.herokuapp.com/users/admin", {
+    fetch("https://car-house-server.onrender.com/users/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -32,7 +32,7 @@ const MakeAdmin = () => {
     e.preventDefault();
   };
     useEffect(() => {
-        fetch("https://protected-cliffs-11617.herokuapp.com/admins/admin")
+        fetch("https://car-house-server.onrender.com/admins/admin")
           .then((res) => res.json())
           .then((data) => setAdmins(data));
     }, [success])

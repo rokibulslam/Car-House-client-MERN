@@ -20,7 +20,7 @@ const UpdateProduct = () => {
   const onSubmitAddProduct = (e) => {
     console.log(product);
     axios
-      .put(`https://protected-cliffs-11617.herokuapp.com/update/${id}`, product)
+      .put(`https://car-house-server.onrender.com/update/${id}`, product)
       .then((res) => {
         if (res.data.acknowledged) {
           alert("Updated Successfully");

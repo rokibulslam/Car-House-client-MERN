@@ -16,7 +16,7 @@ const AddProduct = () => {
     const onSubmitAddProduct = (e) => {
         axios
           .post(
-            "https://protected-cliffs-11617.herokuapp.com/product/addProduct",
+            "https://car-house-server.onrender.com/product/addProduct",
             product
           )
           .then((res) => {

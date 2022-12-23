@@ -35,7 +35,7 @@ const Purchase = () => {
   const { ProductName, price, brand, description, imgURL } = product;
 
   useEffect(() => {
-    fetch(`https://protected-cliffs-11617.herokuapp.com/product/${id}`)
+    fetch(`https://car-house-server.onrender.com/product/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
@@ -60,7 +60,7 @@ const Purchase = () => {
     };
     console.log(order)
     axios
-      .post("https://protected-cliffs-11617.herokuapp.com/orders", order)
+      .post("https://car-house-server.onrender.com/orders", order)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

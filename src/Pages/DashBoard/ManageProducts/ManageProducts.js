@@ -23,16 +23,14 @@ const ManageProducts = () => {
   const [deletes, setDeletes] = useState("");
   
   useEffect(() => {
-    fetch("https://protected-cliffs-11617.herokuapp.com/product")
+    fetch("https://car-house-server.onrender.com/product")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [deletes]);
 
   const handleDeleteProduct = (id) => {
     axios
-      .delete(
-        `https://protected-cliffs-11617.herokuapp.com/product/delete/${id}`
-      )
+      .delete(`https://car-house-server.onrender.com/product/delete/${id}`)
       .then((res) => {
         if (res.data.deletedCount) {
           Swal.fire({

@@ -28,7 +28,7 @@ const Review = () => {
             customerName: user?.displayName,
         };
         axios
-          .post("https://protected-cliffs-11617.herokuapp.com/review", review)
+          .post("https://car-house-server.onrender.com/review", review)
           .then((res) => {
             if (res.data.insertedId) {
               Swal.fire({

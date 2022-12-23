@@ -8,14 +8,14 @@ const ManageOllOrders = () => {
   const [update, setUpdate] = useState("");
   console.log(orders);
   useEffect(() => {
-    fetch("https://protected-cliffs-11617.herokuapp.com/orders")
+    fetch("https://car-house-server.onrender.com/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [update]);
 
   const handlePending = (id, text) => {
     axios
-      .put(`https://protected-cliffs-11617.herokuapp.com/order/status/${id}`, {
+      .put(`https://car-house-server.onrender.com/order/status/${id}`, {
         status: text,
       })
       .then((res) => {
@@ -40,9 +40,7 @@ const ManageOllOrders = () => {
 
     if (confirm) {
       axios
-        .delete(
-          `https://protected-cliffs-11617.herokuapp.com/order/delete/${id}`
-        )
+        .delete(`https://car-house-server.onrender.com/order/delete/${id}`)
         .then((res) => {
           if (res.data.deletedCount) {
             Swal.fire({

@@ -23,7 +23,7 @@ const Cars = () => {
   
   useEffect(() => {
         setIsLoading(true)
-        fetch("https://protected-cliffs-11617.herokuapp.com/product")
+        fetch("https://car-house-server.onrender.com/product")
           .then((res) => res.json())
           .then((data) => setAllCar(data))
           .catch((error) => {})
